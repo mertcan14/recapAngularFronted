@@ -1,0 +1,65 @@
+<div class="main-content">
+    <div *ngIf="dataLoaded==false" class="text-center">
+        <div  class="spinner-grow text-danger" style="width:3rem; height:3rem" role="status">
+            <span class="visually-hidden"></span>
+        </div>
+    </div>
+    <div *ngIf="dataLoaded==true" class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">Araçlar</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th>
+                                        ID
+                                    </th>
+                                    <th>
+                                        Araba
+                                    </th>
+                                    <th>
+                                        Müşteri
+                                    </th>
+                                    <th>
+                                        Verilen Tarih
+                                    </th>
+                                    <th>
+                                        Dönüş Tarihi
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let rental of rentals">
+                                        <td>
+                                            {{rental.id}}
+                                        </td>
+                                        <td>
+                                            {{rental.brandName}}
+                                        </td>
+                                        <td>
+                                            {{rental.customerId}}
+                                        </td>
+                                        <td>
+                                            {{rental.rentDate|date:'fullDate'}}
+                                        </td>
+                                        <td *ngIf="rental.returnDate != null">
+                                            {{rental.returnDate|date:'fullDate'}}
+                                        </td>
+                                        <td *ngIf="rental.returnDate == null">
+                                            <i>Dönüş Yapmadı</i>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  
+

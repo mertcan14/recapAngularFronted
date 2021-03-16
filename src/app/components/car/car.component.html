@@ -1,0 +1,91 @@
+<div class="main-content">
+    <div *ngIf="dataLoaded==false" class="text-center">
+        <div  class="spinner-grow text-danger" style="width:3rem; height:3rem" role="status">
+            <span class="visually-hidden"></span>
+        </div>
+    </div>
+    <div *ngIf="dataLoaded==true && dataDetailLoaded==false" class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">Araçlar</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th>
+                                        Id
+                                    </th>
+                                    <th>
+                                        Marka
+                                    </th>
+                                    <th>
+                                        Araba
+                                    </th>
+                                    <th>
+                                        Renk
+                                    </th>
+                                    <th>
+                                        Fiyat(günlük)
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr routerLink ="/cars/car/{{car.carId}}" *ngFor="let car of cars">
+                                        <td>
+                                            {{car.carId}}
+                                        </td>
+                                        <td>
+                                            {{car.brandName}}
+                                        </td>
+                                        <td>
+                                            {{car.carName}}
+                                        </td>
+                                        <td>
+                                            {{car.colorName}}
+                                        </td>
+                                        <td class="text-primary">
+                                            ${{car.dailyPrice}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="dataDetailLoaded==true;" class="card card-profile">
+        <div class="d-flex justify-content-center">
+            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                  <!-- <div class="carousel-item active">
+                    <img style="border-radius:10px" width="450rem" height="250rem" src="https://localhost:44364/images/defaultCar.png" alt="First slide">
+                  </div> -->
+                  <div *ngFor="let carImage of carImages" [class]="setCarouselActive(carImage.id)">
+                    <img style="border-radius:10px" width="450rem" height="250rem" [src]="localHost + carImage.imagePath" alt="Second slide">
+                  </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+        <div class="card-body">
+            <h6 class="card-category text-gray">{{cars.brandName}}</h6>
+            <h4 class="card-title">{{cars.carName}}</h4>
+            <p class="card-description">
+                <strong>Renk: </strong>{{cars.colorName}}  ~  <strong>Fiyat: </strong>{{cars.dailyPrice}}
+            </p>
+            <a href="javascript:void(0)" class="btn btn-danger btn-round">Kirala</a>
+        </div>
+    </div>
+  </div>
+  

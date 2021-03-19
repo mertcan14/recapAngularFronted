@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Brand } from 'app/models/brand/brand';
 import { BrandService } from 'app/services/brand/brand.service';
 
@@ -11,10 +12,25 @@ export class BrandComponent implements OnInit {
 
   brands:Brand[] = [];
   dataLoaded:boolean = false;
-  constructor(private brandService:BrandService) { }
+  filterBrandText="";
+  dataCarsLoaded=false;
+  selectedBrand="";
+  constructor(private brandService:BrandService, private activatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.getBrands();
+    this.activatedRoute.url.subscribe(url =>{
+      // if (url.filter(u => u.path? console.log(u.path):console.log("boş")) )
+      if(url[0].path == "cars")
+      {
+        this.getBrands();
+        this.dataCarsLoaded=true;
+        console.log("deneme")
+      }
+      else{
+        this.getBrands();
+      }
+    })
+    
   }
   getBrands(){
     this.brandService.getBrands().subscribe(response => {

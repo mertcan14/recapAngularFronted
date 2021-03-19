@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Color } from 'app/models/color/color';
 import { ColorService } from 'app/services/color/color.service';
 
@@ -11,10 +12,22 @@ export class ColorComponent implements OnInit {
 
   colors:Color[] = [];
   dataLoaded:boolean = false;
-  constructor(private colorService:ColorService) { }
+  filterColorText="";
+  dataCarsLoaded= false;
+  selectedColor = "";
+  constructor(private colorService:ColorService, private activatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.getColor();
+    this.activatedRoute.url.subscribe(url =>{
+      if (url[0].path == "cars") {
+        this.getColor();
+        this.dataCarsLoaded=true;
+        console.log("deneme Color")
+      }
+      else{
+        this.getColor();
+      }
+    })
   }
 
   getColor(){

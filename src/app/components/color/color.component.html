@@ -1,20 +1,30 @@
-<div class="main-content">
+<div *ngIf="dataCarsLoaded==false" class="main-content">
     <div *ngIf="dataLoaded==false" class="text-center">
         <div  class="spinner-grow text-danger" style="width:3rem; height:3rem" role="status">
             <span class="visually-hidden"></span>
         </div>
     </div>
-    <div *ngIf="dataLoaded==true" class="container-fluid">
+    <div *ngIf="dataLoaded==true && dataCarsLoaded==false" class="container-fluid">
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header card-header-danger">
-                        <h4 class="card-title ">Renkler</h4>
+                    <div class="card-header card-header-danger row">
+                        <div class="col-md-4">
+                            <h4 class="card-title ">Renkler</h4>
+                        </div>
+                        <div class="col-md-8 row">
+                            <div class="col-11">
+                                <input type="text" [(ngModel)]="filterColorText"  class="form-control" id="filterText" placeholder="Search">
+                            </div>
+                            <div class="col-1">
+                                <span class="material-icons">search</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
                             <ul class="list-group">
-                                <li *ngFor="let color of colors" routerLink = "/cars/color/{{color.colorName}}" class="list-group-item btn btn-light">{{color.colorName}}</li>
+                                <li *ngFor="let color of colors | filterColorPipe:filterColorText" routerLink = "/cars/color/{{color.colorName}}" class="list-group-item btn btn-light">{{color.colorName}}</li>
                             </ul>
                         </div>
                     </div>
@@ -22,5 +32,11 @@
             </div>
         </div>
     </div>
-  </div>
+</div>
+<div *ngIf="dataLoaded==true && dataCarsLoaded==true">
+<select class="form-select" aria-label="Default select example" [(ngModel)]="selectedColor" style="border-radius: 5px;" routerLink = "/cars/color/{{selectedColor}}" >
+    <option selected value="">Renk Seçiniz</option>
+    <option *ngFor="let color of colors" [value]="color.colorName">{{color.colorName}}</option>
+</select>
+</div>
   

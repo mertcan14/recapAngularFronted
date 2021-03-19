@@ -8,11 +8,33 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header card-header-danger">
-                        <h4 class="card-title ">Araçlar</h4>
+                    <div class="card-header card-header-danger row">
+                        <div class="col-md-2">
+                            <h4 class="card-title ">Araçlar</h4>
+                        </div>
+                        <div class="col-md-4 row">
+                            <div class="col-md-6">
+                                <app-brand></app-brand>
+                            </div>
+                            <div class="col-md-6">
+                                <app-color></app-color>
+                            </div>
+                            
+                        </div>
+                        <div class="col-md-6 row">
+                            <div class="col-11">
+                                <input type="text" [(ngModel)]="filterText"  class="form-control" id="filterText" placeholder="Search">
+                            </div>
+                            <div class="col-1">
+                                <span class="material-icons">search</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
+                            <div>
+                                
+                            </div>
                             <table class="table">
                                 <thead class=" text-primary">
                                     <th>
@@ -32,7 +54,7 @@
                                     </th>
                                 </thead>
                                 <tbody>
-                                    <tr routerLink ="/cars/car/{{car.carId}}" *ngFor="let car of cars">
+                                    <tr routerLink ="/cars/car/{{car.carId}}" *ngFor="let car of cars | filterPipe:filterText">
                                         <td>
                                             {{car.carId}}
                                         </td>

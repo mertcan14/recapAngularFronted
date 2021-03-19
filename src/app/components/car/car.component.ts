@@ -16,6 +16,7 @@ export class CarComponent implements OnInit {
   carImages:CarImage[]=[];
   dataLoaded:boolean = false;
   dataDetailLoaded:boolean = false;
+  filterText="";
   localHost:string = "https://localhost:44364";
   constructor(private carService:CarService, private activatedRoute:ActivatedRoute, private carImageService:CarImageService) { }
 

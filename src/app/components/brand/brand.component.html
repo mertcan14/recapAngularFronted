@@ -1,20 +1,30 @@
-<div class="main-content">
+<div *ngIf="dataCarsLoaded==false"  class="main-content">
     <div *ngIf="dataLoaded==false" class="text-center">
         <div class="spinner-grow text-danger" style="width:3rem; height:3rem" role="status">
             <span class="visually-hidden"></span>
         </div>
     </div>
-    <div *ngIf="dataLoaded==true" class="container-fluid">
+    <div *ngIf="dataLoaded==true && dataCarsLoaded==false" class="container-fluid">
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header card-header-danger">
-                        <h4 class="card-title ">Markalar</h4>
+                    <div class="card-header card-header-danger row">
+                        <div class="col-md-4">
+                            <h4 class="card-title ">Markalar</h4>
+                        </div>
+                        <div class="col-md-8 row">
+                            <div class="col-11">
+                                <input type="text" [(ngModel)]="filterBrandText"  class="form-control" id="filterText" placeholder="Search">
+                            </div>
+                            <div class="col-1">
+                                <span class="material-icons">search</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
                             <ul class="list-group">
-                                <li *ngFor="let brand of brands" routerLink = "/cars/brand/{{brand.brandName}}" class="list-group-item btn btn-light">{{brand.brandName}}</li>
+                                <li *ngFor="let brand of brands | filterBrandPipe:filterBrandText" routerLink = "/cars/brand/{{brand.brandName}}" class="list-group-item btn btn-light">{{brand.brandName}}</li>
                             </ul>
                         </div>
                     </div>
@@ -22,6 +32,12 @@
             </div>
         </div>
     </div>
-  </div>
+</div>
+<div *ngIf="dataLoaded==true && dataCarsLoaded==true">
+<select class="form-select" aria-label="Default select example" [(ngModel)]="selectedBrand" style="border-radius: 5px;" routerLink = "/cars/brand/{{selectedBrand}}" >
+    <option selected value="">Marka Seçiniz</option>
+    <option *ngFor="let brand of brands" [value]="brand.brandName">{{brand.brandName}}</option>
+</select>
+</div>
   
 

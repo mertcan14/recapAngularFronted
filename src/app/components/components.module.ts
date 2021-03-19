@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -9,7 +10,9 @@ import { CarComponent } from './car/car.component';
 import { ColorComponent } from './color/color.component';
 import { BrandComponent } from './brand/brand.component';
 import { RentalComponent } from './rental/rental.component';
-
+import { FilterPipePipe } from '../pipes/filter-pipe.pipe';
+import { FilterBrandPipePipe } from '../pipes/filter-brand-pipe.pipe';
+import { FilterColorPipePipe } from '../pipes/filter-color-pipe.pipe';
 @NgModule({
   imports: [
     CommonModule,
@@ -22,12 +25,16 @@ import { RentalComponent } from './rental/rental.component';
     CarComponent,
     ColorComponent,
     BrandComponent,
-    RentalComponent
+    RentalComponent,
+    FilterPipePipe,
+    FilterBrandPipePipe,
+    FilterColorPipePipe
   ],
   exports: [
     FooterComponent,
     NavbarComponent,
-    SidebarComponent
+    SidebarComponent,
+    FormsModule
   ]
 })
 export class ComponentsModule { }

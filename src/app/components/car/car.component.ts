@@ -17,12 +17,17 @@ export class CarComponent implements OnInit {
   dataLoaded:boolean = false;
   dataDetailLoaded:boolean = false;
   filterText="";
+  selectedBrand="";
+  selectedColor="";
   localHost:string = "https://localhost:44364";
   constructor(private carService:CarService, private activatedRoute:ActivatedRoute, private carImageService:CarImageService) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params =>{
-      if (params["brandName"]){
+      if(params["brandName"] && params["colorName"] ){
+        this.getCarsByBrandColor(params["brandName"], params["colorName"]);
+      }
+      else if (params["brandName"]){
         this.getCarsBrandName(params["brandName"]);
       }
       else if(params["colorName"]){
@@ -44,6 +49,12 @@ export class CarComponent implements OnInit {
       this.dataLoaded = true;
     });
   };
+  getCarsByBrandColor(brandName:string, colorName:string){
+    this.carService.getCarsByBrandColor(brandName, colorName).subscribe(response =>{
+      this.cars= response.data;
+      this.dataLoaded =true;
+    });
+  }
   getCarsBrandName(brandName){
     this.carService.getCarsByBrand(brandName).subscribe(response =>{
       this.cars = response.data;

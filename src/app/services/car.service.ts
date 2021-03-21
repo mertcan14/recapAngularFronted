@@ -22,6 +22,10 @@ export class CarService {
     let newUrl = this.apiUrl + "getcarbycolor?colorName=" + colorName
     return this.httpClient.get<CarResponseModel>(newUrl);
   }
+  getCarsByBrandColor(brandName:string,colorName:string):Observable<CarResponseModel>{
+    let newUrl = this.apiUrl + "getcarbybrandcolor?brandName=" + brandName + "&colorName="+colorName;
+    return this.httpClient.get<CarResponseModel>(newUrl);
+  }
   getCarsById(id:number):Observable<CarResponseModel>{
     let newUrl = this.apiUrl + "getbyid?id=" + id
     return this.httpClient.get<CarResponseModel>(newUrl);

@@ -14,7 +14,6 @@ export class BrandComponent implements OnInit {
   dataLoaded:boolean = false;
   filterBrandText="";
   dataCarsLoaded=false;
-  selectedBrand="";
   constructor(private brandService:BrandService, private activatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -24,7 +23,6 @@ export class BrandComponent implements OnInit {
       {
         this.getBrands();
         this.dataCarsLoaded=true;
-        console.log("deneme")
       }
       else{
         this.getBrands();
@@ -38,5 +36,12 @@ export class BrandComponent implements OnInit {
       this.dataLoaded=true
     });
   }
-
+  // setRouter(){
+  //   if (this.selectedBrand === "") {
+      
+  //   }
+  //   else{
+  //     return "/cars/brand/" + this.selectedBrand
+  //   }
+  // }
 }

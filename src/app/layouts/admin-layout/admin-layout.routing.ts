@@ -12,6 +12,7 @@ import { CarComponent } from 'app/components/car/car.component';
 import { ColorComponent } from 'app/components/color/color.component';
 import { BrandComponent } from 'app/components/brand/brand.component';
 import { RentalComponent } from 'app/components/rental/rental.component';
+import { PaymentComponent } from 'app/components/payment/payment.component';
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -59,13 +60,17 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
     { path: 'user-profile',   component: UserProfileComponent },
     { path: 'table-list',     component: TableListComponent },
+    { path: 'payment/pay/:rental/:totalPrice',component: PaymentComponent },
     { path: 'cars',           component: CarComponent },
+    { path: 'cars/filter/:brandName/:colorName',component: CarComponent },
     { path: 'cars/car/:carId',component: CarComponent },
     { path: 'cars/brand/:brandName',component: CarComponent },
     { path: 'cars/color/:colorName',component: CarComponent },
     { path: 'colors',         component: ColorComponent },
     { path: 'brands',         component: BrandComponent },
     { path: 'rentals',        component: RentalComponent },
+    { path: 'rentals/recourse/:carIdofRental',component: RentalComponent },
+    { path: 'rentals/pay/:rentalToAdd',component: RentalComponent },
     { path: 'typography',     component: TypographyComponent },
     { path: 'icons',          component: IconsComponent },
     { path: 'maps',           component: MapsComponent },

@@ -14,7 +14,6 @@ export class ColorComponent implements OnInit {
   dataLoaded:boolean = false;
   filterColorText="";
   dataCarsLoaded= false;
-  selectedColor = "";
   constructor(private colorService:ColorService, private activatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -22,7 +21,6 @@ export class ColorComponent implements OnInit {
       if (url[0].path == "cars") {
         this.getColor();
         this.dataCarsLoaded=true;
-        console.log("deneme Color")
       }
       else{
         this.getColor();
@@ -36,4 +34,12 @@ export class ColorComponent implements OnInit {
       this.dataLoaded = true;
     })
   }
+  // setRouter(){
+  //   if (this.selectedColor === "") {
+      
+  //   }
+  //   else{
+  //     return "/cars/color/" + this.selectedColor
+  //   }
+  // }
 }

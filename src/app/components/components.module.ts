@@ -13,10 +13,16 @@ import { RentalComponent } from './rental/rental.component';
 import { FilterPipePipe } from '../pipes/filter-pipe.pipe';
 import { FilterBrandPipePipe } from '../pipes/filter-brand-pipe.pipe';
 import { FilterColorPipePipe } from '../pipes/filter-color-pipe.pipe';
+import { CarFilterComponent } from './car-filter/car-filter.component';
+import { PaymentComponent } from './payment/payment.component';
+
+
+
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
+    
   ],
   declarations: [
     FooterComponent,
@@ -28,13 +34,15 @@ import { FilterColorPipePipe } from '../pipes/filter-color-pipe.pipe';
     RentalComponent,
     FilterPipePipe,
     FilterBrandPipePipe,
-    FilterColorPipePipe
+    FilterColorPipePipe,
+    CarFilterComponent,
+    PaymentComponent
   ],
   exports: [
     FooterComponent,
     NavbarComponent,
     SidebarComponent,
-    FormsModule
+    FormsModule,
   ]
 })
 export class ComponentsModule { }

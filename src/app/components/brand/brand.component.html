@@ -33,11 +33,12 @@
         </div>
     </div>
 </div>
-<div *ngIf="dataLoaded==true && dataCarsLoaded==true">
-<select class="form-select" aria-label="Default select example" [(ngModel)]="selectedBrand" style="border-radius: 5px;" routerLink = "/cars/brand/{{selectedBrand}}" >
+
+<!-- <div *ngIf="dataLoaded==true && dataCarsLoaded==true">
+<select class="form-select" aria-label="Default select example" [(ngModel)]="selectedBrand" style="border-radius: 5px;" [routerLink] = "setRouter()" >
     <option selected value="">Marka Seçiniz</option>
     <option *ngFor="let brand of brands" [value]="brand.brandName">{{brand.brandName}}</option>
 </select>
-</div>
+</div> -->
   
 

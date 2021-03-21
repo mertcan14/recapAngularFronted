@@ -7,21 +7,13 @@
     <div *ngIf="dataLoaded==true && dataDetailLoaded==false" class="container-fluid">
         <div class="row">
             <div class="col-md-12">
+                <app-car-filter></app-car-filter>
                 <div class="card">
                     <div class="card-header card-header-danger row">
-                        <div class="col-md-2">
+                        <div class="col-md-4">
                             <h4 class="card-title ">Araçlar</h4>
                         </div>
-                        <div class="col-md-4 row">
-                            <div class="col-md-6">
-                                <app-brand></app-brand>
-                            </div>
-                            <div class="col-md-6">
-                                <app-color></app-color>
-                            </div>
-                            
-                        </div>
-                        <div class="col-md-6 row">
+                        <div class="col-md-8 row">
                             <div class="col-11">
                                 <input type="text" [(ngModel)]="filterText"  class="form-control" id="filterText" placeholder="Search">
                             </div>
@@ -106,8 +98,14 @@
             <p class="card-description">
                 <strong>Renk: </strong>{{cars.colorName}}  ~  <strong>Fiyat: </strong>{{cars.dailyPrice}}
             </p>
-            <a href="javascript:void(0)" class="btn btn-danger btn-round">Kirala</a>
+            <button class="btn btn-danger btn-round" data-toggle="modal" routerLink="/rentals/recourse/{{cars.carId}}" >Kirala</button>
         </div>
     </div>
-  </div>
+</div>
+
+
+
+
+
+  
   

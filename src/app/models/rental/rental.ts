@@ -1,9 +1,7 @@
-import { LongDateFormatKey } from "moment";
-
 export interface Rental {
-    id:number;
-    brandName:string;
-    customerId:string;
-    rentDate:Date;
-    returnDate:Date
+    Id?:number;
+    CarId:number;
+    CustomerId:number;
+    RentDate:Date;
+    ReturnDate:Date
 }

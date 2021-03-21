@@ -33,10 +33,10 @@
         </div>
     </div>
 </div>
-<div *ngIf="dataLoaded==true && dataCarsLoaded==true">
-<select class="form-select" aria-label="Default select example" [(ngModel)]="selectedColor" style="border-radius: 5px;" routerLink = "/cars/color/{{selectedColor}}" >
-    <option selected value="">Renk Seçiniz</option>
+<!-- <div *ngIf="dataLoaded==true && dataCarsLoaded==true">
+<select class="form-select" aria-label="Default select example" [(ngModel)]="selectedColor" style="border-radius: 5px;" [routerLink] = "setRouter()" >
+    <option  value="" selected>Renk Seçiniz</option>
     <option *ngFor="let color of colors" [value]="color.colorName">{{color.colorName}}</option>
 </select>
-</div>
+</div> -->
   

@@ -3,3 +3,16 @@
 
 
 ### Build
+  Run ng install to build the project. 
+  
+### Running 
+  Run **ng serve** or **ng serve --open** to run the project. 
+  
+### Routing
+  Routing files **app.routing.ts** in 'src/app/app.routing.ts', **admin-layout.routing.ts** in 'src/app/layout/admin-layout/admin-layout.routing.ts'. 
+### Further Helps
+  To get more help on the Angular CLI use **ng help**.
+
+
+### Images
+  

@@ -1,0 +1,61 @@
+<div  *ngIf="updateColors==false" class="main-content">
+    <div *ngIf="dataColors==false" class="text-center">
+        <div class="spinner-grow text-danger" style="width:3rem; height:3rem" role="status">
+            <span class="visually-hidden"></span>
+        </div>
+    </div>
+    <div *ngIf="dataColors==true" class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger row">
+                        <div class="col-md-4">
+                            <h4 class="card-title ">Renkler</h4>
+                        </div>
+                        <div class="col-md-8 row">
+                            <div class="col-11">
+                                <input type="text"  class="form-control" id="filterText" [(ngModel)]="filterColorText" placeholder="Search">
+                            </div>
+                            <div class="col-1">
+                                <span class="material-icons">search</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <ul class="list-group">
+                                <li *ngFor="let color of colors | filterColorPipe:filterColorText " routerLink = "/colorsupdate/{{color.id}}" style="background-color: #0099e6;" class="list-group-item btn btn-light">{{color.colorName}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div  *ngIf="updateColors==true" class="main-content">
+    <div class="container">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Renk Güncelle</h5>
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="updateColorForm" >
+                        <div class="form-group" style="margin: 1%;">
+                            <label for="colorName">Renk İsmi</label>
+                            <input type="text" id="colorName" formControlName="colorName" class="form-control" placeholder="Renk İsmi" />
+                        </div>                    
+                    </form>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-fiil btn-primary" (click)="update()" >Güncelle</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

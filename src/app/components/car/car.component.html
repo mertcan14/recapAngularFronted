@@ -24,9 +24,6 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <div>
-                                
-                            </div>
                             <table class="table">
                                 <thead class=" text-primary">
                                     <th>
@@ -75,9 +72,6 @@
         <div class="d-flex justify-content-center">
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
-                  <!-- <div class="carousel-item active">
-                    <img style="border-radius:10px" width="450rem" height="250rem" src="https://localhost:44364/images/defaultCar.png" alt="First slide">
-                  </div> -->
                   <div *ngFor="let carImage of carImages" [class]="setCarouselActive(carImage.id)">
                     <img style="border-radius:10px" width="450rem" height="250rem" [src]="localHost + carImage.imagePath" alt="Second slide">
                   </div>
@@ -98,7 +92,7 @@
             <p class="card-description">
                 <strong>Renk: </strong>{{cars.colorName}}  ~  <strong>Fiyat: </strong>{{cars.dailyPrice}}
             </p>
-            <button class="btn btn-danger btn-round" data-toggle="modal" routerLink="/rentals/recourse/{{cars.carId}}" >Kirala</button>
+            <button class="btn btn-danger btn-round" data-toggle="modal" (click)="goRecourse()" routerLink="/rentals/recourse/{{cars.carId}}" >Kirala</button>
         </div>
     </div>
 </div>

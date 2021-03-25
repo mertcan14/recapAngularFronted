@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -15,6 +15,13 @@ import { FilterBrandPipePipe } from '../pipes/filter-brand-pipe.pipe';
 import { FilterColorPipePipe } from '../pipes/filter-color-pipe.pipe';
 import { CarFilterComponent } from './car-filter/car-filter.component';
 import { PaymentComponent } from './payment/payment.component';
+import { AddBrandComponent } from './add-brand/add-brand.component';
+import { AddColorComponent } from './add-color/add-color.component';
+import { AddObjectComponent } from './add-object/add-object.component';
+import { AddCarComponent } from './add-car/add-car.component';
+import { UpdateBrandComponent } from './update-brand/update-brand.component';
+import { UpdateColorComponent } from './update-color/update-color.component';
+import { UpdateCarComponent } from './update-car/update-car.component';
 
 
 
@@ -36,13 +43,21 @@ import { PaymentComponent } from './payment/payment.component';
     FilterBrandPipePipe,
     FilterColorPipePipe,
     CarFilterComponent,
-    PaymentComponent
+    PaymentComponent,
+    AddBrandComponent,
+    AddColorComponent,
+    AddObjectComponent,
+    AddCarComponent,
+    UpdateBrandComponent,
+    UpdateColorComponent,
+    UpdateCarComponent,
   ],
   exports: [
     FooterComponent,
     NavbarComponent,
     SidebarComponent,
     FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class ComponentsModule { }

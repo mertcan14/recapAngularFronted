@@ -13,6 +13,13 @@ import { ColorComponent } from 'app/components/color/color.component';
 import { BrandComponent } from 'app/components/brand/brand.component';
 import { RentalComponent } from 'app/components/rental/rental.component';
 import { PaymentComponent } from 'app/components/payment/payment.component';
+import { AddBrandComponent } from 'app/components/add-brand/add-brand.component';
+import { AddObjectComponent } from 'app/components/add-object/add-object.component';
+import { AddColorComponent } from 'app/components/add-color/add-color.component';
+import { AddCarComponent } from 'app/components/add-car/add-car.component';
+import { UpdateBrandComponent } from 'app/components/update-brand/update-brand.component';
+import { UpdateColorComponent } from 'app/components/update-color/update-color.component';
+import { UpdateCarComponent } from 'app/components/update-car/update-car.component';
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -57,23 +64,33 @@ export const AdminLayoutRoutes: Routes = [
     //         component: UpgradeComponent
     //     }]
     // }
-    { path: 'dashboard',      component: DashboardComponent },
-    { path: 'user-profile',   component: UserProfileComponent },
-    { path: 'table-list',     component: TableListComponent },
-    { path: 'payment/pay/:rental/:totalPrice',component: PaymentComponent },
-    { path: 'cars',           component: CarComponent },
-    { path: 'cars/filter/:brandName/:colorName',component: CarComponent },
-    { path: 'cars/car/:carId',component: CarComponent },
-    { path: 'cars/brand/:brandName',component: CarComponent },
-    { path: 'cars/color/:colorName',component: CarComponent },
-    { path: 'colors',         component: ColorComponent },
-    { path: 'brands',         component: BrandComponent },
-    { path: 'rentals',        component: RentalComponent },
-    { path: 'rentals/recourse/:carIdofRental',component: RentalComponent },
-    { path: 'rentals/pay/:rentalToAdd',component: RentalComponent },
-    { path: 'typography',     component: TypographyComponent },
-    { path: 'icons',          component: IconsComponent },
-    { path: 'maps',           component: MapsComponent },
-    { path: 'notifications',  component: NotificationsComponent },
-    { path: 'upgrade',        component: UpgradeComponent },
+    { path: 'cars',                                 component: CarComponent },
+    { path: 'user-profile',                         component: UserProfileComponent },
+    { path: 'table-list',                           component: TableListComponent },
+    { path: 'payment/pay/:rental/:totalPrice',      component: PaymentComponent },
+    { path: 'cars',                                 component: CarComponent },
+    { path: 'cars/add',                             component: AddCarComponent },
+    { path: 'cars/filter/:brandName/:colorName',    component: CarComponent },
+    { path: 'cars/car/:carId',                      component: CarComponent },
+    { path: 'cars/brand/:brandName',                component: CarComponent },
+    { path: 'cars/color/:colorName',                component: CarComponent },
+    { path: 'colors',                               component: ColorComponent },
+    { path: 'colors/add',                           component: AddColorComponent },
+    { path: 'brands',                               component: BrandComponent },
+    { path: 'add',                                  component: AddObjectComponent },
+    { path: 'brands/add',                           component: AddBrandComponent },
+    { path: 'carsupdate',                           component: UpdateCarComponent },
+    { path: 'carsupdate/:carId',                    component: UpdateCarComponent },
+    { path: 'brandsupdate',                         component: UpdateBrandComponent },
+    { path: 'brandsupdate/:brandId',                component: UpdateBrandComponent },
+    { path: 'colorsupdate',                         component: UpdateColorComponent },
+    { path: 'colorsupdate/:colorId',                component: UpdateColorComponent },
+    { path: 'rentals',                              component: RentalComponent },
+    { path: 'rentals/recourse/:carIdofRental',      component: RentalComponent },
+    { path: 'rentals/pay/:rentalToAdd',             component: RentalComponent },
+    { path: 'typography',                           component: TypographyComponent },
+    { path: 'icons',                                component: IconsComponent },
+    { path: 'maps',                                 component: MapsComponent },
+    { path: 'notifications',                        component: NotificationsComponent },
+    { path: 'upgrade',                              component: UpgradeComponent },
 ];

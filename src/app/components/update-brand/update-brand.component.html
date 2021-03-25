@@ -1,0 +1,61 @@
+<div  *ngIf="updateBrands==false" class="main-content">
+    <div *ngIf="dataBrands==false" class="text-center">
+        <div class="spinner-grow text-danger" style="width:3rem; height:3rem" role="status">
+            <span class="visually-hidden"></span>
+        </div>
+    </div>
+    <div *ngIf="dataBrands==true" class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger row">
+                        <div class="col-md-4">
+                            <h4 class="card-title ">Markalar</h4>
+                        </div>
+                        <div class="col-md-8 row">
+                            <div class="col-11">
+                                <input type="text"  class="form-control" id="filterText" [(ngModel)]="filterBrandText" placeholder="Search">
+                            </div>
+                            <div class="col-1">
+                                <span class="material-icons">search</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <ul class="list-group">
+                                <li *ngFor="let brand of brands | filterBrandPipe:filterBrandText" routerLink = "/brandsupdate/{{brand.id}}" style="background-color: #0099e6;" class="list-group-item btn btn-light">{{brand.brandName}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div  *ngIf="updateBrands==true" class="main-content">
+    <div class="container">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Marka Güncelle</h5>
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="updateBrandForm" >
+                        <div class="form-group" style="margin: 1%;">
+                            <label for="brandName">Marka İsmi</label>
+                            <input type="text" id="brandName" formControlName="brandName" class="form-control" placeholder="Marka İsmi" />
+                        </div>                    
+                    </form>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-fiil btn-primary" (click)="update()">Güncelle</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

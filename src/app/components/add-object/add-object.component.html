@@ -1,0 +1,10 @@
+<div  class="main-content">
+    <div class="row" >
+        <div class="col-md-4 card {{addItem.class}}" routerLinkActive="active" [routerLink]="[addItem.path]"  *ngFor="let addItem of addItems">
+            <i class="material-icons text-center" style="font-size: xxx-large;">{{addItem.icon}}</i>
+            <div class="card-body">
+                <h4 class="card-title text-center">{{addItem.title}}</h4>
+            </div>
+        </div>
+    </div>
+</div>

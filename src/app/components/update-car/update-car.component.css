@@ -1,0 +1,7 @@
+.table-striped > tbody > tr:nth-child(odd) > td {
+    background-color: rgb(255, 255, 255);
+}
+
+.table-striped > tbody > tr:nth-child(even) > td {
+    background-color: #0099e6;
+}

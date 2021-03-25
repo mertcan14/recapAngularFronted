@@ -1,0 +1,123 @@
+<div  *ngIf="updateCars==false" class="main-content">
+    <div *ngIf="dataCars==false" class="text-center">
+        <div class="spinner-grow text-danger" style="width:3rem; height:3rem" role="status">
+            <span class="visually-hidden"></span>
+        </div>
+    </div>
+    <div *ngIf="dataCars==true" class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger row">
+                        <div class="col-md-4">
+                            <h4 class="card-title ">Araçlar</h4>
+                        </div>
+                        <div class="col-md-8 row">
+                            <div class="col-11">
+                                <input type="text"  class="form-control" id="filterText" [(ngModel)]="filterText" placeholder="Search">
+                            </div>
+                            <div class="col-1">
+                                <span class="material-icons">search</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                    <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead class=" text-primary">
+                                    <th>
+                                        Id
+                                    </th>
+                                    <th>
+                                        Marka
+                                    </th>
+                                    <th>
+                                        Araba
+                                    </th>
+                                    <th>
+                                        Renk
+                                    </th>
+                                    <th>
+                                        Fiyat(günlük)
+                                    </th>
+                                </thead>
+                                <tbody >
+                                    <tr routerLink = "/carsupdate/{{car.carId}}" *ngFor="let car of cars| filterPipe:filterText">
+                                        <td>
+                                            {{car.carId}}
+                                        </td>
+                                        <td>
+                                            {{car.brandName}}
+                                        </td>
+                                        <td>
+                                            {{car.carName}}
+                                        </td>
+                                        <td>
+                                            {{car.colorName}}
+                                        </td>
+                                        <td class="text-primary">
+                                            ${{car.dailyPrice}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div *ngIf="updateCars==true" class="main-content">
+    <div class="container">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Araba Ekle</h5>
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="updateCarForm" >
+                        <div class="form-group" style="margin: 1%;">
+                            <label for="brandId">Marka İsmi</label>
+                            <select class="form-select w-100 form-select-lg" aria-label="brandId" formControlName="brandId" id="brandId">
+                                <option selected value="">Open this select menu</option>
+                                <option *ngFor="let brand of brandId" [value]="brand.id">
+                                {{brand.brandName}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="form-group" style="margin: 1%;">
+                            <label for="colorId">Renk İsmi</label>
+                            <select class="form-select w-100 form-select-lg" aria-label="colorId" formControlName="colorId" id="colorId">
+                                <option selected value="">Open this select menu</option>
+                                <option *ngFor="let color of colorId" [value]="color.id">
+                                {{color.colorName}}
+                                </option>
+                            </select>
+                        </div>     
+                        <div class="form-group" style="margin: 1%;">
+                            <label for="modelYear">Üretim Yılı</label>
+                            <input type="number" id="modelYear" formControlName="modelYear" class="form-control" placeholder="Üretim Yılı" />
+                        </div> 
+                        <div class="form-group" style="margin: 1%;">
+                            <label for="dailyPrice">Günlük Ücreti</label>
+                            <input type="number" id="dailyPrice" formControlName="dailyPrice" class="form-control" placeholder="Günlük Ücreti" />
+                        </div>   
+                        <div class="form-group" style="margin: 1%;">
+                            <label for="description">Açıklama</label>
+                            <input type="text" id="description" formControlName="description" class="form-control" placeholder="Açıklama" />
+                        </div>               
+                    </form>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-fiil btn-primary" (click)="update()">Ekle</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

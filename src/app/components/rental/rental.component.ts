@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Car } from 'app/models/car';
+import { CarDto } from 'app/models/carDto';
 import { Customer } from 'app/models/customer/customer';
 import { RentalDto } from 'app/models/rental/rentalDto';
 import { Rental } from 'app/models/rental/rental';
@@ -20,7 +20,8 @@ export class RentalComponent implements OnInit {
   dataLoaded:boolean = false
   dataCarsLoaded:boolean = false
   rentals:RentalDto[] =[];
-  cars:Car[]=[];
+  cars:CarDto[]=[];
+  car:CarDto[];
   customers:Customer[]=[];
   rentDate:Date;
   returnDate:Date;
@@ -75,7 +76,7 @@ export class RentalComponent implements OnInit {
     return dateNow.toISOString().slice(0,10)
   }
 
-  setRentalCreated(car:Car){
+  setRentalCreated(car:CarDto){
     this.newRental = {
         CustomerId:Number(this.customerId),
         CarId:car.carId,

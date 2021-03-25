@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Car } from 'app/models/car';
+import { CarDto } from 'app/models/carDto';
 import { CarImage } from 'app/models/carImage/carImage';
 import { CarService } from 'app/services/car.service';
 import { CarImageService } from 'app/services/carImage/car-image.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-car',
@@ -12,7 +13,7 @@ import { CarImageService } from 'app/services/carImage/car-image.service';
 })
 export class CarComponent implements OnInit {
   
-  cars:Car[] = [];
+  cars:CarDto[] = [];
   carImages:CarImage[]=[];
   dataLoaded:boolean = false;
   dataDetailLoaded:boolean = false;
@@ -20,7 +21,7 @@ export class CarComponent implements OnInit {
   selectedBrand="";
   selectedColor="";
   localHost:string = "https://localhost:44364";
-  constructor(private carService:CarService, private activatedRoute:ActivatedRoute, private carImageService:CarImageService) { }
+  constructor(private carService:CarService, private activatedRoute:ActivatedRoute, private carImageService:CarImageService, private toastrService:ToastrService) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params =>{
@@ -88,5 +89,8 @@ export class CarComponent implements OnInit {
     else{
       return "carousel-item";
     }
+  }
+  goRecourse(){
+    this.toastrService.success("Başvuru sayfasına yönlendiriliyorsunuz.")
   }
 }

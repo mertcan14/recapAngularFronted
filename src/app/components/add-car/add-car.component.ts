@@ -31,7 +31,8 @@ export class AddCarComponent implements OnInit {
       colorId:["",Validators.required],
       modelYear:["", Validators.required],
       dailyPrice:["", Validators.required],
-      description:["", Validators.required]
+      description:["", Validators.required],
+      minFindeks:["", Validators.required]
     })
     this.getBrands();
     this.getColors();

@@ -2,6 +2,7 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 import { ROUTES } from '../sidebar/sidebar.component';
 import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
 import { Router } from '@angular/router';
+import { AuthService } from 'app/services/auth/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,18 +10,26 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+    authIs:boolean;
+    userName:string;
+    userId:number;
     private listTitles: any[];
     location: Location;
       mobile_menu_visible: any = 0;
     private toggleButton: any;
     private sidebarVisible: boolean;
-    deneme:string;
-    constructor(location: Location,  private element: ElementRef, private router: Router) {
+    
+    constructor(location: Location,
+            private element: ElementRef,
+            private router: Router,
+            private authService:AuthService) {
       this.location = location;
           this.sidebarVisible = false;
     }
 
     ngOnInit(){
+        this.isAuth();
+        this.getUserName();
       this.listTitles = ROUTES.filter(listTitle => listTitle);
       const navbar: HTMLElement = this.element.nativeElement;
       this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
@@ -33,6 +42,27 @@ export class NavbarComponent implements OnInit {
          }
      });
     }
+    logout(){
+        this.authService.logOut();
+    }
+
+    isAuth(){
+        this.authIs = this.authService.isAuth();
+    }
+
+    getUserName(){
+        if (this.authIs) {
+            this.userName = this.authService.getUserName();
+        }  
+    }
+
+    getUserId(){
+        if (this.authIs) {
+            this.userId = this.authService.getNameIdentifier();
+            this.router.navigate(["user-profile/", this.userId])
+        }
+    }
+
 
     sidebarOpen() {
         const toggleButton = this.toggleButton;

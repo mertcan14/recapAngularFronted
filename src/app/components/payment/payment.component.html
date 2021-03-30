@@ -1,40 +1,112 @@
 <div class="main-content">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title text-center" id="exampleModalLabel">
-          Ödeme Alanı
-        </h5>
+  <div class="row">
+    <div class="col-xl-6">
+      <div id="accordionExample" class="accordion shadow">
+        <!-- Accordion item 1 -->
+        <div class="card" *ngFor="let creditCard of creditCards">
+            <div [id]="'heading'+ creditCard.id" class="card-header bg-white shadow-sm border-0">
+                <h2 class="mb-0">
+                    <button type="button" data-toggle="collapse" [attr.data-target]="'#collapse'+ creditCard.id" aria-expanded="true" aria-controls="collapseOne" class="btn btn-link text-dark font-weight-bold text-uppercase collapsible-link">Kart Numaram : {{creditCard.creditNumber | slice:0:3}} olan kart</button>
+                </h2>
+            </div>
+            <div [id]="'collapse'+ creditCard.id" [attr.aria-labelledby]="'heading'+ creditCard.id" data-parent="#accordionExample" class="collapse">
+                <div class="card-body p-5">
+                  <p class="font-weight-light m-0">
+                    Kart üzerinde ki isim: <strong>{{creditCard.nameOnCard}}</strong><br>
+                    Kart CVV: <strong>{{creditCard.cardCvv}}</strong><br>
+                  </p>
+                  <br>
+                  <div class="d-flex justify-content-between">
+                    <div>
+                      <button type="button" class="btn btn-danger" (click)="deleteCard(creditCard.id)">Kartımı Kaldır</button>
+                    </div>
+                    <div>
+                      <button type="button" class="btn btn-primary" (click)="registeredCardToPay(creditCard)">Kartım ile Öde</button>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div><!-- End -->
+    </div><!-- End -->
+    </div>
+    <div class="col-xl-6">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-center" id="exampleModalLabel">
+            Ödeme Alanı
+          </h5>
+        </div>
+        <div class="modal-body">
+          <div class="form-group row mb-2">
+            <label for="example-date-input" class="col-4 col-form-label"
+              >Toplam Ücret</label
+            >
+            <div class="col-8">
+              <input
+                type="text"
+                disabled="disabled"
+                class="form-control"
+                value="{{ totalPrice }}"
+              />
+            </div>
+          </div>
+          <div class="form-group row mb-2">
+            <div class="col-12">
+              <input
+                type="text"
+                class="form-control"
+                id="cartNumber"
+                [(ngModel)]="creditNumber"
+                placeholder="Kart Numara"
+              />
+            </div>
+          </div>
+          <div class="form-group row mb-2">
+            <div class="col-12">
+              <input
+                type="text"
+                class="form-control"
+                id="cartName"
+                [(ngModel)]="nameOnCard"
+                placeholder="Kart Üzerinde ki İsim"
+              />
+            </div>
+          </div>
+          <div class="form-group row mb-2">
+            <div class="col-12">
+              <input
+                type="text"
+                class="form-control"
+                id="cartCVV"
+                [(ngModel)]="cardCVV"
+                placeholder="CVV"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer row justify-content-between" style="margin: 5%">
+          <div *ngIf="isAuth == true" class="form-check">
+            <label class="form-check-label">
+              <input
+                type="checkbox"
+                class="checkbox"
+                [(ngModel)]="cardAddCheck"
+              />Kartımı Kayıt Et
+            </label>
+          </div>
+          <div class="row-4">
+            <button
+              data-bs-dismiss="modal"
+              type="button"
+              (click)="checkCardAdd()"
+              class="btn btn-primary"
+            >
+              Öde
+            </button>
+          </div>
+        </div>
       </div>
-      <div class="modal-body">
-        <div class="form-group row mb-2">
-          <label for="example-date-input" class="col-4 col-form-label">Toplam Ücret</label>
-          <div class="col-8">
-            <input type="text" disabled="disabled" class="form-control" value="{{totalPrice}}"/>
-          </div>
-        </div>
-        <div class="form-group row mb-2">
-          <div class="col-12">
-            <input type="text" class="form-control" id="cartNumber" [(ngModel)]="creditNumber" placeholder="Kart Numara">
-          </div>
-        </div>
-        <div class="form-group row mb-2">
-          <div class="col-12">
-            <input type="text" class="form-control" id="cartName" [(ngModel)]="nameOnCard" placeholder="Kart Üzerinde ki İsim">
-          </div>
-        </div>
-        <div class="form-group row mb-2">
-          <div class="col-12">
-            <input type="text" class="form-control" id="cartCVV" [(ngModel)]="cardCVV" placeholder="CVV">
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer row justify-content-between" style="margin: 5%">
-        <div class="row-4">
-          <button data-bs-dismiss="modal" type="button" (click)="payToRental()" class="btn btn-primary">
-            Öde
-          </button>
-        </div>
       </div>
     </div>
   </div>

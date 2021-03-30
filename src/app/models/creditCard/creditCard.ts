@@ -1,7 +1,7 @@
 export interface CreditCard{
-    totalPrice:number;
-    customerId:number;
+    id?:number;
+    userId:number;
     creditNumber:string;
     nameOnCard:string;
-    cardCVV:string;
+    cardCvv:string;
 }

@@ -1,0 +1,29 @@
+<body class="text-center">
+    <app-navbar></app-navbar>
+<main class="form-signin">
+  <form [formGroup]="loginForm">
+    <h1 class="h3 mb-3 fw-normal">Giriş Yapınız</h1>
+
+    <div class="form-floating">
+        <label for="floatingInput">Email</label>
+        <input type="email" class="form-control" formControlName="email" id="floatingInput" placeholder="name@example.com">
+    </div>
+    <div class="form-floating">
+        <label for="floatingPassword">Şifre</label>
+        <input type="password" class="form-control" formControlName="password" id="floatingPassword" placeholder="Şifre">
+    </div>
+
+    <div class="checkbox mb-3">
+      <label>
+        <input type="checkbox" value="remember-me"> Beni hatırla
+      </label>
+    </div>
+    <button class="w-100 btn btn-lg btn-primary" (click)="login()">Giriş Yap</button>
+    <button class="w-100 btn btn-sm btn-light" routerLink="" >Ana Sayfaya Dön</button>
+    <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
+  </form>
+</main>
+
+
+    
+  </body>

@@ -1,0 +1,31 @@
+ <div  class="main-content"> 
+    <div class="container">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Profilini Güncelle</h5>
+                    </div>
+                    <div class="card-body">
+                        <form *ngIf="checkUser==true" [formGroup]="updateUserForm">
+                            <div class="form-floating">
+                                <label for="firstName">İsim</label>
+                                <input type="text" class="form-control" formControlName="firstName" id="firstName" placeholder="isim">
+                            </div>
+                            <br>
+                            <div class="form-floating">
+                                <label for="lastName">Soyisim</label>
+                                <input type="text" class="form-control" formControlName="lastName" id="lastName" placeholder="soyisim">
+                            </div>
+                            <br>
+                            <div class="form-floating">
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control" formControlName="email" id="email" placeholder="name@example.com">
+                            </div>
+                            <br>
+                            <button class="w-100 btn btn-lg btn-primary" (click)="update()">Güncelle</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>

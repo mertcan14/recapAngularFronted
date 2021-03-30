@@ -77,7 +77,8 @@ export class UpdateCarComponent implements OnInit {
       colorId:[this.car.colorId,Validators.required],
       modelYear:[this.car.modelYear, Validators.required],
       dailyPrice:[this.car.dailyPrice, Validators.required],
-      description:[this.car.description, Validators.required]
+      description:[this.car.description, Validators.required],
+      minFindeks:[this.car.minFindeks, Validators.required]
     })
     this.getBrands();
     this.getColors();

@@ -20,6 +20,9 @@ import { AddCarComponent } from 'app/components/add-car/add-car.component';
 import { UpdateBrandComponent } from 'app/components/update-brand/update-brand.component';
 import { UpdateColorComponent } from 'app/components/update-color/update-color.component';
 import { UpdateCarComponent } from 'app/components/update-car/update-car.component';
+import { FindeksComponent } from 'app/components/findeks/findeks.component';
+import { UpdateUserComponent } from 'app/components/update-user/update-user.component';
+
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -65,7 +68,8 @@ export const AdminLayoutRoutes: Routes = [
     //     }]
     // }
     { path: 'cars',                                 component: CarComponent },
-    { path: 'user-profile',                         component: UserProfileComponent },
+    { path: 'user-profilecreativetim',              component: UserProfileComponent },
+    { path: 'user-profile/:userId',                 component: UpdateUserComponent },
     { path: 'table-list',                           component: TableListComponent },
     { path: 'payment/pay/:rental/:totalPrice',      component: PaymentComponent },
     { path: 'cars',                                 component: CarComponent },
@@ -77,7 +81,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'colors',                               component: ColorComponent },
     { path: 'colors/add',                           component: AddColorComponent },
     { path: 'brands',                               component: BrandComponent },
-    { path: 'add',                                  component: AddObjectComponent },
+    { path: 'add',                                  component: AddObjectComponent },   
     { path: 'brands/add',                           component: AddBrandComponent },
     { path: 'carsupdate',                           component: UpdateCarComponent },
     { path: 'carsupdate/:carId',                    component: UpdateCarComponent },
@@ -86,6 +90,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'colorsupdate',                         component: UpdateColorComponent },
     { path: 'colorsupdate/:colorId',                component: UpdateColorComponent },
     { path: 'rentals',                              component: RentalComponent },
+    { path: 'findeks/:carId',                       component: FindeksComponent },
     { path: 'rentals/recourse/:carIdofRental',      component: RentalComponent },
     { path: 'rentals/pay/:rentalToAdd',             component: RentalComponent },
     { path: 'typography',                           component: TypographyComponent },

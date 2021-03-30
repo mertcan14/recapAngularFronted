@@ -22,6 +22,10 @@ import { AddCarComponent } from './add-car/add-car.component';
 import { UpdateBrandComponent } from './update-brand/update-brand.component';
 import { UpdateColorComponent } from './update-color/update-color.component';
 import { UpdateCarComponent } from './update-car/update-car.component';
+import { LoginComponent } from './auth-component/login/login.component';
+import { RegisterComponent } from './auth-component/register/register.component';
+import { FindeksComponent } from './findeks/findeks.component';
+import { UpdateUserComponent } from './update-user/update-user.component';
 
 
 
@@ -51,6 +55,10 @@ import { UpdateCarComponent } from './update-car/update-car.component';
     UpdateBrandComponent,
     UpdateColorComponent,
     UpdateCarComponent,
+    LoginComponent,
+    RegisterComponent,
+    FindeksComponent,
+    UpdateUserComponent,
   ],
   exports: [
     FooterComponent,

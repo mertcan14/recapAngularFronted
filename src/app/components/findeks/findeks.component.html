@@ -1,0 +1,22 @@
+<div  class="main-content">
+    <div class="container">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Findeks Puanı için Kimlik Numaranızı Girmeniz Gerekiyor</h5>
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="checkFindeksForm" >
+                        <div class="form-group" style="margin: 1%;">
+                            <label for="kimlikNo">Kimlik No</label>
+                            <input type="text" id="kimlikNo" formControlName="kimlikNo" class="form-control" placeholder="Kimlik No" />
+                        </div>                    
+                    </form>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-fiil btn-primary" (click)="check()">Gönder</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

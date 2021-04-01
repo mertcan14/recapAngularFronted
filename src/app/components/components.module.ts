@@ -26,6 +26,7 @@ import { LoginComponent } from './auth-component/login/login.component';
 import { RegisterComponent } from './auth-component/register/register.component';
 import { FindeksComponent } from './findeks/findeks.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
+import { ChangePasswordComponent } from './auth-component/change-password/change-password.component';
 
 
 
@@ -59,6 +60,7 @@ import { UpdateUserComponent } from './update-user/update-user.component';
     RegisterComponent,
     FindeksComponent,
     UpdateUserComponent,
+    ChangePasswordComponent,
   ],
   exports: [
     FooterComponent,

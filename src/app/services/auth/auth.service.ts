@@ -16,7 +16,10 @@ import { Router } from '@angular/router';
 export class AuthService {
 
   userName:string;
+  email:string;
   userNameIdentifier:number;
+  userClaims:string[] = [];
+
   apiUrl = "https://localhost:44364/api/auth/"
   jwtHelper:JwtHelperService = new JwtHelperService();
   constructor(private httpClient:HttpClient,
@@ -32,7 +35,9 @@ export class AuthService {
       this.toastrService.success(response.messages, "Başarılı")
       this.storageService.setToken(response.data.token)
       this.setUserName();
+      this.setUserClaims();
       this.setNameIdentifier();
+      this.setEmail();
       this.router.navigate(["/"])
     },
     err=>{
@@ -53,6 +58,20 @@ export class AuthService {
     })
   }
 
+  changePassword(loginModel:Login){
+    let newUrl = this.apiUrl + "changepassword"
+    this.httpClient.post<SingleResponseModel<Token>>(newUrl, loginModel).subscribe(response=>{
+      this.toastrService.success(response.messages, "Başarılı")
+      this.router.navigate(["/"])
+    },
+    err=>{
+      this.toastrService.error(err.error,"Hata")
+    })
+  }
+
+
+
+
   isAuth(){
     let expired = this.jwtHelper.isTokenExpired(this.storageService.getToken())
     if (!expired) {
@@ -72,6 +91,27 @@ export class AuthService {
   getNameIdentifier(){
     this.setNameIdentifier();
     return this.userNameIdentifier;
+  }
+
+  setUserClaims(){
+    var decoded = this.getDecodedToken()
+    var propClaims = Object.keys(decoded).filter(x => x.endsWith("/role"))[0];
+    console.log(decoded[propClaims])
+    this.userClaims = decoded[propClaims];
+  }
+  getUserClaims(){
+    this.setUserClaims();
+    return this.userClaims;
+  }
+
+  setEmail(){
+    var decoded = this.getDecodedToken()
+    var propEmail = Object.keys(decoded).filter(x => x.endsWith("email"))[0];
+    this.email = String(decoded[propEmail]);
+  }
+  getEmail(){
+    this.setEmail();
+    return this.email;
   }
 
 

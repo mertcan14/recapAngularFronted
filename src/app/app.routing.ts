@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { LoginComponent } from './components/auth-component/login/login.component';
 import { RegisterComponent } from './components/auth-component/register/register.component';
+import { ChangePasswordComponent } from './components/auth-component/change-password/change-password.component';
 
 const routes: Routes =[
   {
@@ -23,6 +24,7 @@ const routes: Routes =[
   },
   { path: 'login',                                  component: LoginComponent },   
   { path: 'register',                               component: RegisterComponent },   
+  { path: 'changepassword',                         component: ChangePasswordComponent },   
 ];
 
 @NgModule({

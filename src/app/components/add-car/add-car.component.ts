@@ -25,6 +25,7 @@ export class AddCarComponent implements OnInit {
   ngOnInit(): void {
     this.createCarAddForm();
   }
+  // TODO : Validators özelliklerini araştır ve kullan
   createCarAddForm(){
     this.carAdd = this.formBuilder.group({
       brandId:["",Validators.required],

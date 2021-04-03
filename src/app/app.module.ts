@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 
+
 import { AppComponent } from './app.component';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -25,6 +26,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { ToastrModule} from 'ngx-toastr';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 
+
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -37,7 +39,8 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     AgmCoreModule.forRoot({
       apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
     }),
-    ToastrModule.forRoot({positionClass:"toast-bottom-right"})
+    ToastrModule.forRoot({positionClass:"toast-bottom-right"}),
+    
   ],
   declarations: [
     AppComponent,

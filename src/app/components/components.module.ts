@@ -27,6 +27,7 @@ import { RegisterComponent } from './auth-component/register/register.component'
 import { FindeksComponent } from './findeks/findeks.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
 import { ChangePasswordComponent } from './auth-component/change-password/change-password.component';
+import { AddCarImageComponent } from './add-car-image/add-car-image.component';
 
 
 
@@ -55,12 +56,13 @@ import { ChangePasswordComponent } from './auth-component/change-password/change
     AddCarComponent,
     UpdateBrandComponent,
     UpdateColorComponent,
-    UpdateCarComponent,
+    UpdateCarComponent, 
     LoginComponent,
     RegisterComponent,
     FindeksComponent,
     UpdateUserComponent,
     ChangePasswordComponent,
+    AddCarImageComponent,
   ],
   exports: [
     FooterComponent,

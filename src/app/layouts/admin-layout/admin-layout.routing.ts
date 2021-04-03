@@ -24,6 +24,7 @@ import { FindeksComponent } from 'app/components/findeks/findeks.component';
 import { UpdateUserComponent } from 'app/components/update-user/update-user.component';
 import { LoginGuard } from 'app/guards/login.guard';
 import { AdminGuard } from 'app/guards/admin.guard';
+import { AddCarImageComponent } from 'app/components/add-car-image/add-car-image.component';
 
 
 export const AdminLayoutRoutes: Routes = [
@@ -84,7 +85,9 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'colors/add',                           component: AddColorComponent,           canActivate:[LoginGuard, AdminGuard] },
     { path: 'brands',                               component: BrandComponent},
     { path: 'add',                                  component: AddObjectComponent,          canActivate:[LoginGuard, AdminGuard] },   
-    { path: 'brands/add',                           component: AddBrandComponent },
+    { path: 'carimage/add',                         component: AddCarImageComponent,        canActivate:[LoginGuard, AdminGuard] },
+    { path: 'carimage/add/:carId',                  component: AddCarImageComponent,        canActivate:[LoginGuard, AdminGuard] },
+    { path: 'brands/add',                           component: AddBrandComponent,           canActivate:[LoginGuard, AdminGuard] },
     { path: 'carsupdate',                           component: UpdateCarComponent,          canActivate:[LoginGuard, AdminGuard] },
     { path: 'carsupdate/:carId',                    component: UpdateCarComponent,          canActivate:[LoginGuard, AdminGuard] },
     { path: 'brandsupdate',                         component: UpdateBrandComponent,        canActivate:[LoginGuard, AdminGuard] },

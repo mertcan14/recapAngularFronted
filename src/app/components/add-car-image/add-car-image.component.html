@@ -1,0 +1,96 @@
+<div  class="main-content">
+    <div *ngIf="dataLoaded==false && formLoaded==false" class="text-center">
+        <div class="spinner-grow text-danger" style="width:3rem; height:3rem" role="status">
+            <span class="visually-hidden"></span>
+        </div>
+    </div>
+    <div *ngIf="dataLoaded==true" class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger row">
+                        <div class="col-md-4">
+                            <h4 class="card-title ">Araçlar</h4>
+                        </div>
+                        <div class="col-md-8 row">
+                            <div class="col-11">
+                                <input type="text"  class="form-control" id="filterText" [(ngModel)]="filterText" placeholder="Search">
+                            </div>
+                            <div class="col-1">
+                                <span class="material-icons">search</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                    <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead class=" text-primary">
+                                    <th>
+                                        Id
+                                    </th>
+                                    <th>
+                                        Marka
+                                    </th>
+                                    <th>
+                                        Araba
+                                    </th>
+                                    <th>
+                                        Renk
+                                    </th>
+                                    <th>
+                                        Fiyat(günlük)
+                                    </th>
+                                </thead>
+                                <tbody >
+                                    <tr routerLink = "/carimage/add/{{car.carId}}" *ngFor="let car of cars| filterPipe:filterText">
+                                        <td>
+                                            {{car.carId}}
+                                        </td>
+                                        <td>
+                                            {{car.brandName}}
+                                        </td>
+                                        <td>
+                                            {{car.carName}}
+                                        </td>
+                                        <td>
+                                            {{car.colorName}}
+                                        </td>
+                                        <td class="text-primary">
+                                            ${{car.dailyPrice}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Form Sayfası -->
+    <div *ngIf="formLoaded==true" class="container">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5><strong>{{car.brandName}} {{car.carName}}</strong> Resim Ekle</h5>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="fileUploadInput">
+                            <label>✨ Upload File</label>
+                            <input type="file" (change)="fileChange($event)" />
+                            <button>+</button>
+                        </div>
+                        <!-- <input type="file" (change)="fileChange($event)" placeholder="Upload file" >                     -->
+                    </form>
+                </div>
+            </div>
+            <div>
+                <button class="btn btn-lg btn-primary btn-block" (click)="add()">Ekle</button>
+            </div>
+        </div>
+    </div>
+</div>

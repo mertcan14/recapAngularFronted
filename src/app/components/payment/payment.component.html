@@ -2,7 +2,6 @@
   <div class="row">
     <div class="col-xl-6">
       <div id="accordionExample" class="accordion shadow">
-        <!-- Accordion item 1 -->
         <div class="card" *ngFor="let creditCard of creditCards">
             <div [id]="'heading'+ creditCard.id" class="card-header bg-white shadow-sm border-0">
                 <h2 class="mb-0">
@@ -26,8 +25,8 @@
                   </div>
                 </div>
             </div>
-        </div><!-- End -->
-    </div><!-- End -->
+        </div>
+    </div>
     </div>
     <div class="col-xl-6">
     <div class="modal-dialog">
@@ -54,11 +53,11 @@
           <div class="form-group row mb-2">
             <div class="col-12">
               <input
-                type="text"
                 class="form-control"
                 id="cartNumber"
                 [(ngModel)]="creditNumber"
                 placeholder="Kart Numara"
+                type="tel" autocomplete="cc-number" ccNumber
               />
             </div>
           </div>

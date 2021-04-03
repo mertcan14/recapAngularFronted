@@ -27,9 +27,6 @@
                             <table class="table">
                                 <thead class=" text-primary">
                                     <th>
-                                        Id
-                                    </th>
-                                    <th>
                                         Marka
                                     </th>
                                     <th>
@@ -45,9 +42,6 @@
                                 <tbody>
                                     <tr routerLink ="/cars/car/{{car.carId}}" *ngFor="let car of cars | filterPipe:filterText">
                                         <td>
-                                            {{car.carId}}
-                                        </td>
-                                        <td>
                                             {{car.brandName}}
                                         </td>
                                         <td>
@@ -57,7 +51,7 @@
                                             {{car.colorName}}
                                         </td>
                                         <td class="text-primary">
-                                            ${{car.dailyPrice}}
+                                            {{car.dailyPrice}}
                                         </td>
                                     </tr>
                                 </tbody>

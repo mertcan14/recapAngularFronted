@@ -15,6 +15,7 @@ declare const $: any;
     { path: '/carsupdate', title: 'Araç Güncelle',  icon:'directions_car', class: 'bg-info text-dark' },
     { path: '/colorsupdate', title: 'Renk Güncelle',  icon:'color_lens', class: 'bg-primary text-dark' },
     { path: '/brandsupdate', title: 'Marka Güncelle',  icon:'content_paste', class: 'bg-success text-dark' },
+    { path: '/carimage/add', title: 'Resim Ekle',  icon:'file_upload', class: 'bg-info text-white' },
 ];
 
 

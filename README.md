@@ -32,3 +32,6 @@
   
   ##### Pay
   <img src="https://user-images.githubusercontent.com/61551987/112180494-aa531580-8c0c-11eb-90aa-a02f93a30e02.PNG" width="550" height="300">
+  
+  ##### Add/Update
+  <img src="https://user-images.githubusercontent.com/61551987/113480434-da1bdc00-949c-11eb-9382-e8174c079a15.PNG" width="550" height="300">

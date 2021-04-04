@@ -5,20 +5,41 @@
     <h1 class="h3 mb-3 fw-normal">Giriş Yapınız</h1>
 
     <div class="form-floating">
-        <label for="floatingInput">İsim</label>
+        <label for="floatingInput">İsim
+        <!-- Labelın sonunda required işareti bırakıyor <span class="text-danger" *ngIf="registerForm.get('firstName').errors && registerForm.get('firstName').hasError('required')">*</span>-->
+        </label>
         <input type="text" class="form-control" formControlName="firstName" id="floatingInput" placeholder="isim">
+        <div *ngIf="registerForm.controls['firstName'].invalid && (registerForm.controls['firstName'].dirty || registerForm.controls['firstName'].touched)">
+          <span class="text-danger" *ngIf="registerForm.get('firstName').errors && registerForm.get('firstName').hasError('required')">*İsim Girmeniz Gerekiyor</span>
+          <small class="text-danger" *ngIf="registerForm.get('firstName').errors && registerForm.get('firstName').hasError('minlength')">*İsim 3 karakterden az olamaz</small>
+          <small class="text-danger" *ngIf="registerForm.get('firstName').errors && registerForm.get('firstName').hasError('maxlength')">*İsim 25 karakterden fazla olamaz</small>
+        </div>
     </div>
     <div class="form-floating">
         <label for="floatingInput">Soyisim</label>
         <input type="text" class="form-control" formControlName="lastName" id="floatingInput" placeholder="soyisim">
+        <div *ngIf="registerForm.controls['lastName'].invalid && (registerForm.controls['lastName'].dirty || registerForm.controls['lastName'].touched)">
+          <small class="text-danger" *ngIf="registerForm.get('lastName').errors && registerForm.get('lastName').hasError('required')">*Soyisim Girmeniz Gerekiyor</small>
+          <small class="text-danger" *ngIf="registerForm.get('lastName').errors && registerForm.get('lastName').hasError('minlength')">*Soyisim 3 karakterden az olamaz</small>
+          <small class="text-danger" *ngIf="registerForm.get('lastName').errors && registerForm.get('lastName').hasError('maxlength')">*Soyisim 20 karakterden fazla olamaz</small>
+        </div>
     </div>
     <div class="form-floating">
         <label for="floatingInput">Email</label>
         <input type="email" class="form-control" formControlName="email" id="floatingInput" placeholder="name@example.com">
+        <div *ngIf="registerForm.controls['email'].invalid && (registerForm.controls['email'].dirty || registerForm.controls['email'].touched)">
+          <span class="text-danger" *ngIf="registerForm.get('email').errors && registerForm.get('email').hasError('required')">*Email Girmeniz Gerekiyor</span>
+          <span class="text-danger" *ngIf="registerForm.get('email').errors && registerForm.get('email').hasError('email')">*Email Formatında Olması Gerekiyor</span>
+        </div>
     </div>
-    <div class="form-floating">
+    <div class="form-floating" >
         <label for="floatingPassword">Şifre</label>
         <input type="password" class="form-control" formControlName="password" id="floatingPassword" placeholder="Şifre">
+        <div *ngIf="registerForm.controls['password'].invalid && (registerForm.controls['password'].dirty || registerForm.controls['password'].touched)">
+          <span class="text-danger" *ngIf="registerForm.get('password').errors && registerForm.get('password').hasError('required')">*Şifre Girmeniz Gerekiyor</span>
+          <span class="text-danger" *ngIf="registerForm.get('password').errors && registerForm.get('password').hasError('minlength')">*Şifre 5 karakterden az olamaz</span>
+          <span class="text-danger" *ngIf="registerForm.get('password').errors && registerForm.get('password').hasError('maxlength')">*Şifre 15 karakterden fazla olamaz</span>
+        </div>
     </div>
 
     <div class="checkbox mb-3">

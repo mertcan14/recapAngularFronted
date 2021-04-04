@@ -21,7 +21,7 @@ export class AddColorComponent implements OnInit {
   }
   createColorForm(){
     this.colorAdd = this.formBuilder.group({
-      colorName:["", Validators.required]
+      colorName:["", [Validators.required, Validators.minLength(3)]]
     })
   }
   add(){

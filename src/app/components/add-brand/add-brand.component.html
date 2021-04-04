@@ -10,7 +10,11 @@
                         <div class="form-group" style="margin: 1%;">
                             <label for="brandName">Marka İsmi</label>
                             <input type="text" id="brandName" formControlName="brandName" class="form-control" placeholder="Marka İsmi" />
-                        </div>                    
+                        </div>        
+                        <div *ngIf="brandAddForm.controls['brandName'].invalid && (brandAddForm.controls['brandName'].dirty || brandAddForm.controls['brandName'].touched)">
+                                <span class="text-danger" *ngIf="brandAddForm.get('brandName').errors && brandAddForm.get('brandName').hasError('required')">*Marka Girmeniz Gerekiyor</span>
+                                <span class="text-danger" *ngIf="brandAddForm.get('brandName').errors && brandAddForm.get('brandName').hasError('minlength')">*Marka 3 karakterden az olamaz</span>
+                        </div>            
                     </form>
                 </div>
                 <div class="card-footer">

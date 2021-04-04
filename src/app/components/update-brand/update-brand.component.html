@@ -48,6 +48,10 @@
                         <div class="form-group" style="margin: 1%;">
                             <label for="brandName">Marka İsmi</label>
                             <input type="text" id="brandName" formControlName="brandName" class="form-control" placeholder="Marka İsmi" />
+                            <div *ngIf="updateBrandForm.controls['brandName'].invalid && (updateBrandForm.controls['brandName'].dirty || updateBrandForm.controls['brandName'].touched)">
+                                <span class="text-danger" *ngIf="updateBrandForm.get('brandName').errors && updateBrandForm.get('brandName').hasError('required')">*Marka Girmeniz Gerekiyor</span>
+                                <span class="text-danger" *ngIf="updateBrandForm.get('brandName').errors && updateBrandForm.get('brandName').hasError('minlength')">*Marka 3 karakterden az olamaz</span>
+                        </div> 
                         </div>                    
                     </form>
                 </div>

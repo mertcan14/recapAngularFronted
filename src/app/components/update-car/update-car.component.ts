@@ -75,10 +75,10 @@ export class UpdateCarComponent implements OnInit {
     this.updateCarForm = this.formBuilder.group({
       brandId:[this.car.brandId,Validators.required],
       colorId:[this.car.colorId,Validators.required],
-      modelYear:[this.car.modelYear, Validators.required],
-      dailyPrice:[this.car.dailyPrice, Validators.required],
-      description:[this.car.description, Validators.required],
-      minFindeks:[this.car.minFindeks, Validators.required]
+      modelYear:[this.car.modelYear, [Validators.required, Validators.min(2010)]],
+      dailyPrice:[this.car.dailyPrice, [Validators.required, Validators.min(0)]],
+      description:[this.car.description, [Validators.required, Validators.minLength(2)]],
+      minFindeks:[this.car.minFindeks, [Validators.required, Validators.min(1100), Validators.max(1900)]]
     })
     this.getBrands();
     this.getColors();

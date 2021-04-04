@@ -36,7 +36,7 @@ export class UpdateBrandComponent implements OnInit {
   createUpdateBrandForm(){
     this.updateBrands=true;
     this.updateBrandForm = this.formBuilder.group({
-      brandName:[this.brand.brandName, Validators.required],
+      brandName:[this.brand.brandName, [Validators.required, Validators.minLength(3)]],
     })
   }
   update(){

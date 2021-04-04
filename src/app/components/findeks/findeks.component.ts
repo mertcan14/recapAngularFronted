@@ -31,7 +31,7 @@ export class FindeksComponent implements OnInit {
   }
   createCheckFindeksForm(){
     this.checkFindeksForm = this.formBuilder.group({
-      kimlikNo:["", Validators.required]
+      kimlikNo:["", [Validators.required, Validators.minLength(11), Validators.maxLength(11)]]
     })
   }
    async check(){

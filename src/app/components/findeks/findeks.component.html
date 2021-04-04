@@ -10,6 +10,11 @@
                         <div class="form-group" style="margin: 1%;">
                             <label for="kimlikNo">Kimlik No</label>
                             <input type="text" id="kimlikNo" formControlName="kimlikNo" class="form-control" placeholder="Kimlik No" />
+                            <div *ngIf="checkFindeksForm.controls['kimlikNo'].invalid && (checkFindeksForm.controls['kimlikNo'].dirty || checkFindeksForm.controls['kimlikNo'].touched)">
+                                <span class="text-danger" *ngIf="checkFindeksForm.get('kimlikNo').errors && checkFindeksForm.get('kimlikNo').hasError('required')">*Kimlik No Girmeniz Gerekiyor</span>
+                                <span class="text-danger" *ngIf="checkFindeksForm.get('kimlikNo').errors && checkFindeksForm.get('kimlikNo').hasError('minlength')">*Kimlik No eksik girildi</span>
+                                <span class="text-danger" *ngIf="checkFindeksForm.get('kimlikNo').errors && checkFindeksForm.get('kimlikNo').hasError('maxlength')">*Kimlik No fazla girildi</span>
+                        </div>
                         </div>                    
                     </form>
                 </div>

@@ -10,6 +10,10 @@
                         <div class="form-group" style="margin: 1%;">
                             <label for="colorName">Renk İsmi</label>
                             <input type="text" id="colorName" formControlName="colorName" class="form-control" placeholder="Renk İsmi" />
+                            <div *ngIf="colorAdd.controls['colorName'].invalid && (colorAdd.controls['colorName'].dirty || colorAdd.controls['colorName'].touched)">
+                                <span class="text-danger" *ngIf="colorAdd.get('colorName').errors && colorAdd.get('colorName').hasError('required')">*Renk Girmeniz Gerekiyor</span>
+                                <span class="text-danger" *ngIf="colorAdd.get('colorName').errors && colorAdd.get('colorName').hasError('minlength')">*Renk 3 karakterden az olamaz</span>
+                            </div>
                         </div>                    
                     </form>
                 </div>

@@ -25,15 +25,14 @@ export class AddCarComponent implements OnInit {
   ngOnInit(): void {
     this.createCarAddForm();
   }
-  // TODO : Validators özelliklerini araştır ve kullan
   createCarAddForm(){
     this.carAdd = this.formBuilder.group({
       brandId:["",Validators.required],
       colorId:["",Validators.required],
-      modelYear:["", Validators.required],
-      dailyPrice:["", Validators.required],
-      description:["", Validators.required],
-      minFindeks:["", Validators.required]
+      modelYear:["", [Validators.required, Validators.min(2010)]],
+      dailyPrice:["", [Validators.required, Validators.min(0)]],
+      description:["", [Validators.required, Validators.minLength(2)]],
+      minFindeks:["", [Validators.required, Validators.min(1100), Validators.max(1900)]]
     })
     this.getBrands();
     this.getColors();

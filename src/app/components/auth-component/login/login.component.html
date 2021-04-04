@@ -7,16 +7,23 @@
     <div class="form-floating">
         <label for="floatingInput">Email</label>
         <input type="email" class="form-control" formControlName="email" id="floatingInput" placeholder="name@example.com">
+        <div *ngIf="loginForm.controls['email'].invalid && (loginForm.controls['email'].dirty || loginForm.controls['email'].touched)">
+          <span class="text-danger" *ngIf="loginForm.get('email').errors && loginForm.get('email').hasError('required')">*Email Girmeniz Gerekiyor</span>
+          <span class="text-danger" *ngIf="loginForm.get('email').errors && loginForm.get('email').hasError('email')">*Email Formatında Olması Gerekiyor</span>
+        </div>
+        <!-- Validators kurallarını yerine getirene kadar zorunlulukları gösteriyor <div [class.valid]="loginForm.get('email').valid && (loginForm.get('email').dirty || loginForm.get('email').touched)">
+          <span class="text-danger" *ngIf="loginForm.get('email').errors && loginForm.get('email').hasError('required')">*Email Girmeniz Gerekiyor</span>
+          <span class="text-danger" *ngIf="loginForm.get('email').errors && loginForm.get('email').hasError('email')">*Email Formatında Olması Gerekiyor</span>
+        </div> -->
     </div>
     <div class="form-floating">
         <label for="floatingPassword">Şifre</label>
         <input type="password" class="form-control" formControlName="password" id="floatingPassword" placeholder="Şifre">
-    </div>
-
-    <div class="checkbox mb-3">
-      <label>
-        <input type="checkbox" value="remember-me"> Beni hatırla
-      </label>
+        <div *ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)">
+          <span class="text-danger" *ngIf="loginForm.get('password').errors && loginForm.get('password').hasError('required')">*Şifre Girmeniz Gerekiyor</span>
+          <span class="text-danger" *ngIf="loginForm.get('password').errors && loginForm.get('password').hasError('minlength')">*Şifre 5 den az olamaz</span>
+          <span class="text-danger" *ngIf="loginForm.get('password').errors && loginForm.get('password').hasError('maxlength')">*Şifre 15 den fazla olamaz</span>
+        </div>
     </div>
     <button class="w-100 btn btn-lg btn-primary" (click)="login()">Giriş Yap</button>
     <button class="w-100 btn btn-sm btn-light" routerLink="" >Ana Sayfaya Dön</button>

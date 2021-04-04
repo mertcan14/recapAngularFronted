@@ -4,6 +4,7 @@ import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common'
 import { Router } from '@angular/router';
 import { AuthService } from 'app/services/auth/auth.service';
 
+// TODO: Admin Panelinde görev atama yap
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -13,6 +14,7 @@ export class NavbarComponent implements OnInit {
     authIs:boolean;
     userName:string;
     userId:number;
+    userClaims:string[] =[];
     private listTitles: any[];
     location: Location;
       mobile_menu_visible: any = 0;
@@ -46,8 +48,13 @@ export class NavbarComponent implements OnInit {
         this.authService.logOut();
     }
 
+    
+
     isAuth(){
         this.authIs = this.authService.isAuth();
+        if (this.authIs) {
+            this.userClaims = this.authService.getUserClaims();
+        }
     }
 
     getUserName(){

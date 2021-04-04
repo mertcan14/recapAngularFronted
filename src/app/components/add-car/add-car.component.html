@@ -15,6 +15,9 @@
                                 {{brand.brandName}}
                                 </option>
                             </select>
+                            <div *ngIf="carAdd.controls['brandId'].invalid && (carAdd.controls['brandId'].dirty || carAdd.controls['brandId'].touched)">
+                                <span class="text-danger" *ngIf="carAdd.get('brandId').errors && carAdd.get('brandId').hasError('required')">*Marka Girmeniz Gerekiyor</span>
+                            </div>
                         </div>
                         <div class="form-group" style="margin: 1%;">
                             <label for="colorId">Renk İsmi</label>
@@ -24,22 +27,42 @@
                                 {{color.colorName}}
                                 </option>
                             </select>
+                            <div *ngIf="carAdd.controls['colorId'].invalid && (carAdd.controls['colorId'].dirty || carAdd.controls['colorId'].touched)">
+                                <span class="text-danger" *ngIf="carAdd.get('colorId').errors && carAdd.get('colorId').hasError('required')">*Renk Girmeniz Gerekiyor</span>
+                            </div>
                         </div>     
                         <div class="form-group" style="margin: 1%;">
                             <label for="modelYear">Üretim Yılı</label>
                             <input type="number" id="modelYear" formControlName="modelYear" class="form-control" placeholder="Üretim Yılı" />
+                            <div *ngIf="carAdd.controls['modelYear'].invalid && (carAdd.controls['modelYear'].dirty || carAdd.controls['modelYear'].touched)">
+                                <span class="text-danger" *ngIf="carAdd.get('modelYear').errors && carAdd.get('modelYear').hasError('required')">*Üretim Yılı Girmeniz Gerekiyor</span>
+                                <span class="text-danger" *ngIf="carAdd.get('modelYear').errors && carAdd.get('modelYear').hasError('min')">*Üretim Yılı 2010 dan küçük olamaz</span>
+                            </div>
                         </div> 
                         <div class="form-group" style="margin: 1%;">
                             <label for="dailyPrice">Günlük Ücreti</label>
                             <input type="number" id="dailyPrice" formControlName="dailyPrice" class="form-control" placeholder="Günlük Ücreti" />
+                            <div *ngIf="carAdd.controls['dailyPrice'].invalid && (carAdd.controls['dailyPrice'].dirty || carAdd.controls['dailyPrice'].touched)">
+                                <span class="text-danger" *ngIf="carAdd.get('dailyPrice').errors && carAdd.get('dailyPrice').hasError('required')">*Günlük Ücreti Girmeniz Gerekiyor</span>
+                                <span class="text-danger" *ngIf="carAdd.get('dailyPrice').errors && carAdd.get('dailyPrice').hasError('min')">*Günlük Ücreti 0 dan küçük olamaz</span>
+                            </div>
                         </div>   
                         <div class="form-group" style="margin: 1%;">
                             <label for="description">Açıklama</label>
                             <input type="text" id="description" formControlName="description" class="form-control" placeholder="Açıklama" />
+                            <div *ngIf="carAdd.controls['description'].invalid && (carAdd.controls['description'].dirty || carAdd.controls['description'].touched)">
+                                <span class="text-danger" *ngIf="carAdd.get('description').errors && carAdd.get('description').hasError('required')">*Açıklama Girmeniz Gerekiyor</span>
+                                <span class="text-danger" *ngIf="carAdd.get('description').errors && carAdd.get('description').hasError('minlength')">*Açıklama 2 karakterden dan küçük olamaz</span>
+                            </div>
                         </div>  
                         <div class="form-group" style="margin: 1%;">
                             <label for="minFindeks">Minimum Findeks Puanı</label>
                             <input type="number" id="minFindeks" formControlName="minFindeks" class="form-control" placeholder="Findeks" />
+                            <div *ngIf="carAdd.controls['minFindeks'].invalid && (carAdd.controls['minFindeks'].dirty || carAdd.controls['minFindeks'].touched)">
+                                <span class="text-danger" *ngIf="carAdd.get('minFindeks').errors && carAdd.get('minFindeks').hasError('required')">*Findeks Puanı Girmeniz Gerekiyor</span>
+                                <span class="text-danger" *ngIf="carAdd.get('minFindeks').errors && carAdd.get('minFindeks').hasError('max')">*Findeks Puanı 1900 dan büyük olamaz</span>
+                                <span class="text-danger" *ngIf="carAdd.get('minFindeks').errors && carAdd.get('minFindeks').hasError('min')">*Findeks Puanı 1100 dan küçük olamaz</span>
+                            </div>
                         </div>              
                     </form>
                 </div>

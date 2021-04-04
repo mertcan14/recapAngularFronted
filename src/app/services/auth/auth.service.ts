@@ -51,6 +51,9 @@ export class AuthService {
       this.toastrService.success(response.messages, "Başarılı")
       this.storageService.setToken(response.data.token)
       this.setUserName();
+      this.setUserClaims();
+      this.setNameIdentifier();
+      this.setEmail();
       this.router.navigate(["/"])
     },
     err=>{
@@ -96,7 +99,6 @@ export class AuthService {
   setUserClaims(){
     var decoded = this.getDecodedToken()
     var propClaims = Object.keys(decoded).filter(x => x.endsWith("/role"))[0];
-    console.log(decoded[propClaims])
     this.userClaims = decoded[propClaims];
   }
   getUserClaims(){

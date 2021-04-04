@@ -23,8 +23,9 @@ import { UpdateCarComponent } from 'app/components/update-car/update-car.compone
 import { FindeksComponent } from 'app/components/findeks/findeks.component';
 import { UpdateUserComponent } from 'app/components/update-user/update-user.component';
 import { LoginGuard } from 'app/guards/login.guard';
-import { AdminGuard } from 'app/guards/admin.guard';
 import { AddCarImageComponent } from 'app/components/add-car-image/add-car-image.component';
+import { ManagerGuard } from 'app/guards/manager.guard';
+import { OperationClaimsGuard } from 'app/guards/operation-claims.guard';
 
 
 export const AdminLayoutRoutes: Routes = [
@@ -72,35 +73,47 @@ export const AdminLayoutRoutes: Routes = [
     // }
     { path: 'cars',                                 component: CarComponent },
     { path: 'user-profilecreativetim',              component: UserProfileComponent },
-    { path: 'user-profile/:userId',                 component: UpdateUserComponent,         canActivate:[LoginGuard] },
     { path: 'table-list',                           component: TableListComponent },
-    { path: 'payment/pay/:rental/:totalPrice',      component: PaymentComponent,            canActivate:[LoginGuard] },
-    { path: 'cars',                                 component: CarComponent },
-    { path: 'cars/add',                             component: AddCarComponent,             canActivate:[LoginGuard, AdminGuard] },
-    { path: 'cars/filter/:brandName/:colorName',    component: CarComponent },
-    { path: 'cars/car/:carId',                      component: CarComponent },
-    { path: 'cars/brand/:brandName',                component: CarComponent },
-    { path: 'cars/color/:colorName',                component: CarComponent },
-    { path: 'colors',                               component: ColorComponent },
-    { path: 'colors/add',                           component: AddColorComponent,           canActivate:[LoginGuard, AdminGuard] },
-    { path: 'brands',                               component: BrandComponent},
-    { path: 'add',                                  component: AddObjectComponent,          canActivate:[LoginGuard, AdminGuard] },   
-    { path: 'carimage/add',                         component: AddCarImageComponent,        canActivate:[LoginGuard, AdminGuard] },
-    { path: 'carimage/add/:carId',                  component: AddCarImageComponent,        canActivate:[LoginGuard, AdminGuard] },
-    { path: 'brands/add',                           component: AddBrandComponent,           canActivate:[LoginGuard, AdminGuard] },
-    { path: 'carsupdate',                           component: UpdateCarComponent,          canActivate:[LoginGuard, AdminGuard] },
-    { path: 'carsupdate/:carId',                    component: UpdateCarComponent,          canActivate:[LoginGuard, AdminGuard] },
-    { path: 'brandsupdate',                         component: UpdateBrandComponent,        canActivate:[LoginGuard, AdminGuard] },
-    { path: 'brandsupdate/:brandId',                component: UpdateBrandComponent,        canActivate:[LoginGuard, AdminGuard] },
-    { path: 'colorsupdate',                         component: UpdateColorComponent,        canActivate:[LoginGuard, AdminGuard] },
-    { path: 'colorsupdate/:colorId',                component: UpdateColorComponent,        canActivate:[LoginGuard, AdminGuard] },
-    { path: 'rentals',                              component: RentalComponent,             canActivate:[LoginGuard] },
-    { path: 'findeks/:carId',                       component: FindeksComponent,            canActivate:[LoginGuard] },
-    { path: 'rentals/recourse/:carIdofRental',      component: RentalComponent,             canActivate:[LoginGuard] },
-    { path: 'rentals/pay/:rentalToAdd',             component: RentalComponent,             canActivate:[LoginGuard] },
     { path: 'typography',                           component: TypographyComponent },
     { path: 'icons',                                component: IconsComponent },
     { path: 'maps',                                 component: MapsComponent },
     { path: 'notifications',                        component: NotificationsComponent },
     { path: 'upgrade',                              component: UpgradeComponent },
+    { path: 'cars',                                 component: CarComponent }, 
+    { path: 'cars/filter/:brandName/:colorName',    component: CarComponent},
+    { path: 'cars/car/:carId',                      component: CarComponent },
+    { path: 'cars/brand/:brandName',                component: CarComponent },
+    { path: 'cars/color/:colorName',                component: CarComponent },
+    { path: 'colors',                               component: ColorComponent },
+    { path: 'brands',                               component: BrandComponent},
+    {
+        path: '',
+        canActivate:[LoginGuard],
+        children: [
+            { path: 'rentals',                              component: RentalComponent },
+            { path: 'findeks/:carId',                       component: FindeksComponent },
+            { path: 'rentals/recourse/:carIdofRental',      component: RentalComponent },
+            { path: 'rentals/pay/:rentalToAdd',             component: RentalComponent },
+            { path: 'payment/pay/:rental/:totalPrice',      component: PaymentComponent },
+            { path: 'cars/add',                             component: AddCarComponent,             canActivate:[OperationClaimsGuard], data:{roles:['admin', 'product.add']} },
+            { path: 'colors/add',                           component: AddColorComponent,           canActivate:[OperationClaimsGuard], data:{roles:['admin', 'product.add']} },
+            { path: 'user-profile/:userId',                 component: UpdateUserComponent},
+            { path: 'add',                                  component: AddObjectComponent,          canActivate:[ManagerGuard] },   
+            { path: 'carimage/add',                         component: AddCarImageComponent,        canActivate:[OperationClaimsGuard], data:{roles:['admin', 'product.add']} },
+            { path: 'carimage/add/:carId',                  component: AddCarImageComponent,        canActivate:[OperationClaimsGuard], data:{roles:['admin', 'product.add']} },
+            { path: 'brands/add',                           component: AddBrandComponent,           canActivate:[OperationClaimsGuard], data:{roles:['admin', 'product.add']} },
+            { path: 'carsupdate',                           component: UpdateCarComponent,          canActivate:[OperationClaimsGuard], data:{roles:['admin', 'product.update']} },
+            { path: 'carsupdate/:carId',                    component: UpdateCarComponent,          canActivate:[OperationClaimsGuard], data:{roles:['admin', 'product.update']} },
+            { path: 'brandsupdate',                         component: UpdateBrandComponent,        canActivate:[OperationClaimsGuard], data:{roles:['admin', 'product.update']} },
+            { path: 'brandsupdate/:brandId',                component: UpdateBrandComponent,        canActivate:[OperationClaimsGuard], data:{roles:['admin', 'product.update']} },
+            { path: 'colorsupdate',                         component: UpdateColorComponent,        canActivate:[OperationClaimsGuard], data:{roles:['admin', 'product.update']} },
+            { path: 'colorsupdate/:colorId',                component: UpdateColorComponent,        canActivate:[OperationClaimsGuard], data:{roles:['admin', 'product.update']} },
+        ]
+    },
+    
+    
+
 ];
+
+// TODO: Admin panelinde kullanıcıları görebileceği bir component yap
+// TODO: Faturaları Email ile gönderme sistemi kur 

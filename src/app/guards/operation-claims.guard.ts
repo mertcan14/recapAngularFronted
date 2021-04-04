@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class AdminGuard implements CanActivate {
+export class OperationClaimsGuard implements CanActivate {
   constructor(private authService:AuthService,
     private toastrService:ToastrService,
     private router:Router){
@@ -16,23 +16,24 @@ export class AdminGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      var claims = this.authService.getUserClaims();
+    const roles = route.data['roles'] as Array<string>
+    var claims = this.authService.getUserClaims();
       try{
-        if((claims.includes("admin"))){
-          return true;
+        for (let index = 0; index < roles.length; index++) {
+          if((claims.includes(roles[index]))){
+            return true;
+          }
         }
-        else{
-          this.router.navigate(["/"]);
-          this.toastrService.info("Giriş için yetkiniz yetersiz")
-          return false;
-        }
-      }
-      catch{
         this.router.navigate(["/"]);
         this.toastrService.info("Giriş için yetkiniz yetersiz")
         return false;
       }
-      
+      catch{
+        this.router.navigate(["/"]);
+        this.toastrService.info("Giriş için yetkiniz yetersiz Hata")
+        return false;
+      }
+
   }
   
 }

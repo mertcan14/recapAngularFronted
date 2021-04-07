@@ -28,7 +28,9 @@ import { FindeksComponent } from './findeks/findeks.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
 import { ChangePasswordComponent } from './auth-component/change-password/change-password.component';
 import { AddCarImageComponent } from './add-car-image/add-car-image.component';
-
+import { UserClaimComponent } from './user-claim/user-claim.component';
+import { FilterUserPipe } from '../pipes/filter-user.pipe';
+import { AddUserClaimComponent } from './user-claim/add-user-claim/add-user-claim.component';
 
 
 @NgModule({
@@ -48,6 +50,7 @@ import { AddCarImageComponent } from './add-car-image/add-car-image.component';
     FilterPipePipe,
     FilterBrandPipePipe,
     FilterColorPipePipe,
+    FilterUserPipe,
     CarFilterComponent,
     PaymentComponent,
     AddBrandComponent,
@@ -63,6 +66,8 @@ import { AddCarImageComponent } from './add-car-image/add-car-image.component';
     UpdateUserComponent,
     ChangePasswordComponent,
     AddCarImageComponent,
+    UserClaimComponent,
+    AddUserClaimComponent,
   ],
   exports: [
     FooterComponent,

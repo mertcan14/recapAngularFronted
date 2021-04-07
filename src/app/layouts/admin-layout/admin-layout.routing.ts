@@ -26,6 +26,8 @@ import { LoginGuard } from 'app/guards/login.guard';
 import { AddCarImageComponent } from 'app/components/add-car-image/add-car-image.component';
 import { ManagerGuard } from 'app/guards/manager.guard';
 import { OperationClaimsGuard } from 'app/guards/operation-claims.guard';
+import { UserClaimComponent } from 'app/components/user-claim/user-claim.component';
+import { AddUserClaimComponent } from 'app/components/user-claim/add-user-claim/add-user-claim.component';
 
 
 export const AdminLayoutRoutes: Routes = [
@@ -91,23 +93,26 @@ export const AdminLayoutRoutes: Routes = [
         canActivate:[LoginGuard],
         children: [
             { path: 'rentals',                              component: RentalComponent },
+            { path: 'user/claims/:userId',                  component: UserClaimComponent,          canActivate:[OperationClaimsGuard], data:{roles:['admin']} },
+            { path: 'user/claims',                          component: UserClaimComponent,          canActivate:[OperationClaimsGuard], data:{roles:['admin']} },
+            { path: 'user/claims/add/:userId',              component: AddUserClaimComponent,          canActivate:[OperationClaimsGuard], data:{roles:['admin']} },
             { path: 'findeks/:carId',                       component: FindeksComponent },
             { path: 'rentals/recourse/:carIdofRental',      component: RentalComponent },
             { path: 'rentals/pay/:rentalToAdd',             component: RentalComponent },
             { path: 'payment/pay/:rental/:totalPrice',      component: PaymentComponent },
-            { path: 'cars/add',                             component: AddCarComponent,             canActivate:[OperationClaimsGuard], data:{roles:['admin', 'product.add']} },
-            { path: 'colors/add',                           component: AddColorComponent,           canActivate:[OperationClaimsGuard], data:{roles:['admin', 'product.add']} },
+            { path: 'cars/add',                             component: AddCarComponent,             canActivate:[OperationClaimsGuard], data:{roles:['admin', 'productAdd']} },
+            { path: 'colors/add',                           component: AddColorComponent,           canActivate:[OperationClaimsGuard], data:{roles:['admin', 'productAdd']} },
             { path: 'user-profile/:userId',                 component: UpdateUserComponent},
             { path: 'add',                                  component: AddObjectComponent,          canActivate:[ManagerGuard] },   
-            { path: 'carimage/add',                         component: AddCarImageComponent,        canActivate:[OperationClaimsGuard], data:{roles:['admin', 'product.add']} },
-            { path: 'carimage/add/:carId',                  component: AddCarImageComponent,        canActivate:[OperationClaimsGuard], data:{roles:['admin', 'product.add']} },
-            { path: 'brands/add',                           component: AddBrandComponent,           canActivate:[OperationClaimsGuard], data:{roles:['admin', 'product.add']} },
-            { path: 'carsupdate',                           component: UpdateCarComponent,          canActivate:[OperationClaimsGuard], data:{roles:['admin', 'product.update']} },
-            { path: 'carsupdate/:carId',                    component: UpdateCarComponent,          canActivate:[OperationClaimsGuard], data:{roles:['admin', 'product.update']} },
-            { path: 'brandsupdate',                         component: UpdateBrandComponent,        canActivate:[OperationClaimsGuard], data:{roles:['admin', 'product.update']} },
-            { path: 'brandsupdate/:brandId',                component: UpdateBrandComponent,        canActivate:[OperationClaimsGuard], data:{roles:['admin', 'product.update']} },
-            { path: 'colorsupdate',                         component: UpdateColorComponent,        canActivate:[OperationClaimsGuard], data:{roles:['admin', 'product.update']} },
-            { path: 'colorsupdate/:colorId',                component: UpdateColorComponent,        canActivate:[OperationClaimsGuard], data:{roles:['admin', 'product.update']} },
+            { path: 'carimage/add',                         component: AddCarImageComponent,        canActivate:[OperationClaimsGuard], data:{roles:['admin', 'productAdd']} },
+            { path: 'carimage/add/:carId',                  component: AddCarImageComponent,        canActivate:[OperationClaimsGuard], data:{roles:['admin', 'productAdd']} },
+            { path: 'brands/add',                           component: AddBrandComponent,           canActivate:[OperationClaimsGuard], data:{roles:['admin', 'productAdd']} },
+            { path: 'carsupdate',                           component: UpdateCarComponent,          canActivate:[OperationClaimsGuard], data:{roles:['admin', 'productUpdate']} },
+            { path: 'carsupdate/:carId',                    component: UpdateCarComponent,          canActivate:[OperationClaimsGuard], data:{roles:['admin', 'productUpdate']} },
+            { path: 'brandsupdate',                         component: UpdateBrandComponent,        canActivate:[OperationClaimsGuard], data:{roles:['admin', 'productUpdate']} },
+            { path: 'brandsupdate/:brandId',                component: UpdateBrandComponent,        canActivate:[OperationClaimsGuard], data:{roles:['admin', 'productUpdate']} },
+            { path: 'colorsupdate',                         component: UpdateColorComponent,        canActivate:[OperationClaimsGuard], data:{roles:['admin', 'productUpdate']} },
+            { path: 'colorsupdate/:colorId',                component: UpdateColorComponent,        canActivate:[OperationClaimsGuard], data:{roles:['admin', 'productUpdate']} },
         ]
     },
     

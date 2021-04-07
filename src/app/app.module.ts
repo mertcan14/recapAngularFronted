@@ -27,6 +27,7 @@ import { ToastrModule} from 'ngx-toastr';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 
+
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -44,7 +45,7 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
   ],
   declarations: [
     AppComponent,
-    AdminLayoutComponent,
+    AdminLayoutComponent
   ],
   providers: [
     {provide:HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi:true}

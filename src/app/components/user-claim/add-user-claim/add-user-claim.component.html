@@ -1,0 +1,30 @@
+<div class="main-content">
+    <div class="container">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Araba Ekle</h5>
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="addUserOperationClaimForm" >
+                        <div class="form-group" style="margin: 1%;">
+                            <label for="operationClaimId">Yetki Seçiniz</label>
+                            <select class="form-select w-100 form-select-lg" aria-label="operationClaimId" formControlName="operationClaimId" id="operationClaimId">
+                                <option selected value="">Open this select menu</option>
+                                <option *ngFor="let claim of claims" [value]="claim.id">
+                                {{claim.name}}
+                                </option>
+                            </select>
+                            <div *ngIf="addUserOperationClaimForm.controls['operationClaimId'].invalid && (addUserOperationClaimForm.controls['operationClaimId'].dirty || addUserOperationClaimForm.controls['operationClaimId'].touched)">
+                                <span class="text-danger" *ngIf="addUserOperationClaimForm.get('operationClaimId').errors && addUserOperationClaimForm.get('operationClaimId').hasError('required')">*Yetki Girmeniz Gerekiyor</span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-fiil btn-primary" (click)="add()">Ekle</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

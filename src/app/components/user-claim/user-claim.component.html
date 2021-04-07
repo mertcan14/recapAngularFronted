@@ -1,0 +1,95 @@
+<div class="main-content">
+    <div *ngIf="datasLoaded == false && dataLoaded == false" class="text-center">
+        <div  class="spinner-grow text-danger" style="width:3rem; height:3rem" role="status">
+            <span class="visually-hidden"></span>
+        </div>
+    </div>
+    <div *ngIf="dataLoaded == true">
+        <div class="container">
+            <div class="card">
+                <div class="card-header card-header-danger d-flex justify-content-between">
+                    <div >
+                        <h4 class="card-title ">{{userClaims.email}}</h4>
+                    </div>
+                    <div >
+                        <button style="color: white;" type="button" routerLink="/user/claims/add/{{userClaims.userId}}" class="btn btn-link"><span style="font-size: xx-large;" class="material-icons">bookmark_add</span> Ekle</button>
+                    </div>
+                </div>
+                <br>
+                <table class="table" style="margin-left: 2%;">
+                    <tbody >
+                        <tr *ngFor="let claimName of userClaims.claimName" >
+                            <td style="font-size:large; width: 80%;">{{claimName | uppercase}}</td>
+                            <td style="font-size:large; width: 20%;"><button  type="button" class="btn btn-danger" data-toggle="modal" [attr.data-target]="'#Modal'+claimName">Kaldır</button></td>
+                            <div class="modal fade" [attr.id]="'Modal'+claimName" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h5 class="modal-title" id="exampleModalLabel">Yetkiyi Kaldırmak İstediğinize Emin Misiniz?</h5>
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                    </div>
+                                    <div class="modal-body">
+                                      {{claimName}} yetkisini kaldır.
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                      <button type="button" class="btn btn-danger" (click)="deleteClaim(claimName)" >Kaldır</button>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+       
+
+    </div>
+
+    <div *ngIf="datasLoaded == true" class="container-fluid">
+        <div class="card">
+            <div class="card-header card-header-danger row">
+                <div class="col-md-4">
+                    <h4 class="card-title ">Yetkililer</h4>
+                </div>
+                <div class="col-md-8 row">
+                    <div class="col-11">
+                        <input type="text" [(ngModel)]="filterText"  class="form-control" id="filterText" placeholder="Search">
+                    </div>
+                    <div class="col-1">
+                        <span class="material-icons">search</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class=" text-primary">
+                            <th>
+                               Email
+                            </th>
+                            <th>
+                                Görevleri
+                            </th>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let usersClaim of usersClaims | filterUser:filterText" routerLink = "/user/claims/{{usersClaim.userId}}">
+                                <td>
+                                    {{usersClaim.email}}
+                                </td>
+                                <td>
+                                    <span *ngFor="let claimName of usersClaim.claimName">{{claimName}} / </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

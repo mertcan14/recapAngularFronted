@@ -1,0 +1,46 @@
+<main role="main">
+
+      <section class="jumbotron text-center">
+        <div class="container">
+          <img src="../../../assets/img/carIcon2.jpg" width="800rem" height="360rem" style="border-radius: 15rem;">
+          <h1 class="jumbotron-heading">Recap Araç Kiralamanın Yeni Adresi</h1>
+          <p class="lead text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Id similique molestiae, aliquam rerum odit minima maxime facilis ad ex adipisci quisquam sequi. Dolorum eius eos nesciunt quo quos quia laborum pariatur explicabo ut saepe recusandae, sed optio cupiditate, sit autem velit quas ipsum, minima deleniti illo sequi maxime? Tempore, dolores itaque. Enim velit dolore impedit. Voluptatem, tenetur eos. Nostrum nihil assumenda, expedita doloremque rerum architecto, commodi reprehenderit ipsa, nobis inventore velit mollitia! Natus aspernatur voluptatibus unde, quas voluptatum odit explicabo, voluptate facilis animi sit maiores eum totam atque ut mollitia, molestias optio id nulla magnam autem quasi nostrum? Minima, saepe.</p>
+        </div>
+      </section>
+
+      <div class="album py-5 bg-light">
+        <div class="container">
+          <h2 routerLink="/cars" class="text-center">ARAÇLARIMIZ</h2>
+          <div class="row">
+            <div *ngFor="let car of cars" class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <div [id]="'carousel' + car.carId" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                    <div *ngFor="let carImage of car.imagePath" routerLink="/cars/car/{{car.carId}}" [class]="setCarouselActive(car.carId, carImage)">
+                        <img style="border-radius:10px" width="350rem" height="250rem" [src]="localHost + carImage" alt="Second slide">
+                    </div>
+                    </div>
+                    <a class="carousel-control-prev" [href]="'#carousel' + car.carId" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" [href]="'#carousel' + car.carId" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                    </a>
+                </div>
+                <div class="card-body">
+                  <div style="height: 50px;">
+                    <p class="card-text" style="font-size: large;"> <strong>{{car.brandName}}</strong> {{car.carName}}</p>
+                  </div>
+                  <div class="d-flex justify-content-center">
+                    <a routerLink="/findeks/{{car.carId}}" class="btn btn-warning">Kirala</a>
+                  </div>
+                </div>
+              </div>
+            </div>            
+          </div>
+        </div>
+      </div>
+
+    </main>

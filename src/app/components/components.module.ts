@@ -31,6 +31,8 @@ import { AddCarImageComponent } from './add-car-image/add-car-image.component';
 import { UserClaimComponent } from './user-claim/user-claim.component';
 import { FilterUserPipe } from '../pipes/filter-user.pipe';
 import { AddUserClaimComponent } from './user-claim/add-user-claim/add-user-claim.component';
+import { HomepageComponent } from './homepage/homepage.component';
+import { AddHomepagecarComponent } from './add-homepagecar/add-homepagecar.component';
 
 
 @NgModule({
@@ -68,6 +70,8 @@ import { AddUserClaimComponent } from './user-claim/add-user-claim/add-user-clai
     AddCarImageComponent,
     UserClaimComponent,
     AddUserClaimComponent,
+    HomepageComponent,
+    AddHomepagecarComponent,
   ],
   exports: [
     FooterComponent,

@@ -7,11 +7,12 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { LoginComponent } from './components/auth-component/login/login.component';
 import { RegisterComponent } from './components/auth-component/register/register.component';
 import { ChangePasswordComponent } from './components/auth-component/change-password/change-password.component';
+import { HomepageComponent } from './components/homepage/homepage.component';
 
 const routes: Routes =[
   {
     path: '',
-    redirectTo: 'cars',
+    redirectTo: 'homepage',
     pathMatch: 'full',
   }, 
   {
@@ -25,6 +26,7 @@ const routes: Routes =[
   { path: 'login',                                  component: LoginComponent },   
   { path: 'register',                               component: RegisterComponent },   
   { path: 'changepassword',                         component: ChangePasswordComponent },   
+     
 ];
 
 @NgModule({

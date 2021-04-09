@@ -88,6 +88,7 @@ export class AuthService {
   
   setNameIdentifier(){
     var decoded = this.getDecodedToken()
+    console.log(decoded)
     var propUserName = Object.keys(decoded).filter(x => x.endsWith("/nameidentifier"))[0];
     this.userNameIdentifier = Number(decoded[propUserName]);
   }

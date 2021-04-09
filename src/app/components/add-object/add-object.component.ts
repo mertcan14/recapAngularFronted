@@ -17,7 +17,8 @@ declare const $: any;
     { path: '/colorsupdate', title: 'Renk Güncelle',  icon:'color_lens', class: 'bg-primary text-dark' },
     { path: '/brandsupdate', title: 'Marka Güncelle',  icon:'content_paste', class: 'bg-success text-dark' },
     { path: '/carimage/add', title: 'Resim Ekle',  icon:'file_upload', class: 'bg-info text-white' },
-    { path: '/user/claims', title: 'Yönetici Yetkileri',  icon:'manage_accounts', class: 'bg-primary text-white' }
+    { path: '/user/claims', title: 'Yönetici Yetkileri',  icon:'manage_accounts', class: 'bg-primary text-white' },
+    { path: '/homepagecar', title: 'Vitrin Araçları',  icon:'car_rental', class: 'bg-success text-white' }
 ];
 
 export const ProductAdd: RouteInfo[] = [

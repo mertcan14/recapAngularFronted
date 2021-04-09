@@ -28,6 +28,8 @@ import { ManagerGuard } from 'app/guards/manager.guard';
 import { OperationClaimsGuard } from 'app/guards/operation-claims.guard';
 import { UserClaimComponent } from 'app/components/user-claim/user-claim.component';
 import { AddUserClaimComponent } from 'app/components/user-claim/add-user-claim/add-user-claim.component';
+import { HomepageComponent } from 'app/components/homepage/homepage.component';
+import { AddHomepagecarComponent } from 'app/components/add-homepagecar/add-homepagecar.component';
 
 
 export const AdminLayoutRoutes: Routes = [
@@ -82,6 +84,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'notifications',                        component: NotificationsComponent },
     { path: 'upgrade',                              component: UpgradeComponent },
     { path: 'cars',                                 component: CarComponent }, 
+    { path: 'homepage',                             component: HomepageComponent },
     { path: 'cars/filter/:brandName/:colorName',    component: CarComponent},
     { path: 'cars/car/:carId',                      component: CarComponent },
     { path: 'cars/brand/:brandName',                component: CarComponent },
@@ -104,6 +107,8 @@ export const AdminLayoutRoutes: Routes = [
             { path: 'colors/add',                           component: AddColorComponent,           canActivate:[OperationClaimsGuard], data:{roles:['admin', 'productAdd']} },
             { path: 'user-profile/:userId',                 component: UpdateUserComponent},
             { path: 'add',                                  component: AddObjectComponent,          canActivate:[ManagerGuard] },   
+            { path: 'add/homepagecar',                      component: AddHomepagecarComponent,     canActivate:[OperationClaimsGuard], data:{roles:['admin', 'moderator']} },
+            { path: 'homepagecar',                          component: AddHomepagecarComponent,     canActivate:[OperationClaimsGuard], data:{roles:['admin', 'moderator']} },
             { path: 'carimage/add',                         component: AddCarImageComponent,        canActivate:[OperationClaimsGuard], data:{roles:['admin', 'productAdd']} },
             { path: 'carimage/add/:carId',                  component: AddCarImageComponent,        canActivate:[OperationClaimsGuard], data:{roles:['admin', 'productAdd']} },
             { path: 'brands/add',                           component: AddBrandComponent,           canActivate:[OperationClaimsGuard], data:{roles:['admin', 'productAdd']} },

@@ -30,6 +30,8 @@ import { UserClaimComponent } from 'app/components/user-claim/user-claim.compone
 import { AddUserClaimComponent } from 'app/components/user-claim/add-user-claim/add-user-claim.component';
 import { HomepageComponent } from 'app/components/homepage/homepage.component';
 import { AddHomepagecarComponent } from 'app/components/add-homepagecar/add-homepagecar.component';
+import { UsersManagerComponent } from 'app/components/users-manager/users-manager.component';
+import { BlockedUserComponent } from 'app/components/blocked-user/blocked-user.component';
 
 
 export const AdminLayoutRoutes: Routes = [
@@ -98,7 +100,8 @@ export const AdminLayoutRoutes: Routes = [
             { path: 'rentals',                              component: RentalComponent },
             { path: 'user/claims/:userId',                  component: UserClaimComponent,          canActivate:[OperationClaimsGuard], data:{roles:['admin']} },
             { path: 'user/claims',                          component: UserClaimComponent,          canActivate:[OperationClaimsGuard], data:{roles:['admin']} },
-            { path: 'user/claims/add/:userId',              component: AddUserClaimComponent,          canActivate:[OperationClaimsGuard], data:{roles:['admin']} },
+            { path: 'user/claims/add/:userId',              component: AddUserClaimComponent,       canActivate:[OperationClaimsGuard], data:{roles:['admin']} },
+            { path: 'users/claims/add',                     component: AddUserClaimComponent,       canActivate:[OperationClaimsGuard], data:{roles:['admin']} },
             { path: 'findeks/:carId',                       component: FindeksComponent },
             { path: 'rentals/recourse/:carIdofRental',      component: RentalComponent },
             { path: 'rentals/pay/:rentalToAdd',             component: RentalComponent },
@@ -108,6 +111,8 @@ export const AdminLayoutRoutes: Routes = [
             { path: 'user-profile/:userId',                 component: UpdateUserComponent},
             { path: 'add',                                  component: AddObjectComponent,          canActivate:[ManagerGuard] },   
             { path: 'add/homepagecar',                      component: AddHomepagecarComponent,     canActivate:[OperationClaimsGuard], data:{roles:['admin', 'moderator']} },
+            { path: 'users/manage',                         component: UsersManagerComponent,       canActivate:[OperationClaimsGuard], data:{roles:['admin', 'moderator']} },
+            { path: 'blockedusers/manage',                  component: BlockedUserComponent,        canActivate:[OperationClaimsGuard], data:{roles:['admin', 'moderator']} },
             { path: 'homepagecar',                          component: AddHomepagecarComponent,     canActivate:[OperationClaimsGuard], data:{roles:['admin', 'moderator']} },
             { path: 'carimage/add',                         component: AddCarImageComponent,        canActivate:[OperationClaimsGuard], data:{roles:['admin', 'productAdd']} },
             { path: 'carimage/add/:carId',                  component: AddCarImageComponent,        canActivate:[OperationClaimsGuard], data:{roles:['admin', 'productAdd']} },

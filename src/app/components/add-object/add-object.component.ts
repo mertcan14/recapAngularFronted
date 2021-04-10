@@ -18,7 +18,8 @@ declare const $: any;
     { path: '/brandsupdate', title: 'Marka Güncelle',  icon:'content_paste', class: 'bg-success text-dark' },
     { path: '/carimage/add', title: 'Resim Ekle',  icon:'file_upload', class: 'bg-info text-white' },
     { path: '/user/claims', title: 'Yönetici Yetkileri',  icon:'manage_accounts', class: 'bg-primary text-white' },
-    { path: '/homepagecar', title: 'Vitrin Araçları',  icon:'car_rental', class: 'bg-success text-white' }
+    { path: '/homepagecar', title: 'Vitrin Araçları',  icon:'car_rental', class: 'bg-success text-white' },
+    { path: '/users/manage', title: 'Kullanıcıları Yönet',  icon:'account_circle', class: 'bg-info text-dark' }
 ];
 
 export const ProductAdd: RouteInfo[] = [
@@ -34,6 +35,11 @@ export const ProductUpdate: RouteInfo[] = [
   { path: '/brandsupdate', title: 'Marka Güncelle',  icon:'content_paste', class: 'bg-success text-dark' }
 ];
 
+export const Moderator: RouteInfo[] = [
+  { path: '/users/manage', title: 'Kullanıcıları Yönet',  icon:'account_circle', class: 'bg-info text-dark' },
+  { path: '/homepagecar', title: 'Vitrin Araçları',  icon:'car_rental', class: 'bg-success text-white' }
+];
+
 
 @Component({
   selector: 'app-add-object',
@@ -42,7 +48,7 @@ export const ProductUpdate: RouteInfo[] = [
 })
 export class AddObjectComponent implements OnInit {
 
-  addItems:any[];
+  addItems:RouteInfo[] = [];
   userClaims:string[]=[];
   constructor(private authService:AuthService) { }
 
@@ -54,13 +60,24 @@ export class AddObjectComponent implements OnInit {
     await this.getUserClaims();
     console.log(this.userClaims)
     if (this.userClaims.includes("admin")) {
-      this.addItems = Admin.filter(addItem => addItem)
+      Admin.forEach(element => {
+        this.addItems.push(element)
+      });
     }
-    else if(this.userClaims.includes("productAdd")){
-      this.addItems = ProductAdd.filter(addItem => addItem)
+    if(this.userClaims.includes("productAdd")){
+      ProductAdd.forEach(element => {
+        this.addItems.push(element)
+      });
     }
-    else if(this.userClaims.includes("productUpdate")){
-      this.addItems = ProductUpdate.filter(addItem => addItem)
+    if(this.userClaims.includes("productUpdate")){
+      ProductUpdate.forEach(element => {
+        this.addItems.push(element)
+      });
+    }
+    if(this.userClaims.includes("moderator")){
+      Moderator.forEach(element => {
+        this.addItems.push(element)
+      });
     }
   }
 

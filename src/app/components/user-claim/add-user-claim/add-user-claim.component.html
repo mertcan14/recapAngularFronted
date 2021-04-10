@@ -1,9 +1,14 @@
 <div class="main-content">
+    <div *ngIf="userDataLoaded == false && usersDataLoaded == false" class="text-center">
+        <div  class="spinner-grow text-danger" style="width:3rem; height:3rem" role="status">
+            <span class="visually-hidden"></span>
+        </div>
+    </div>
     <div class="container">
         <div class="col-md-12">
-            <div class="card">
+            <div *ngIf="userDataLoaded == true" class="card">
                 <div class="card-header">
-                    <h5>Araba Ekle</h5>
+                    <h5>Görev Ekle</h5>
                 </div>
                 <div class="card-body">
                     <form [formGroup]="addUserOperationClaimForm" >
@@ -23,6 +28,42 @@
                 </div>
                 <div class="card-footer">
                     <button class="btn btn-fiil btn-primary btn-block" (click)="add()">Ekle</button>
+                </div>
+            </div>
+            <div *ngIf="usersDataLoaded == true" class="card">
+                <div class="card-header">
+                    <h5>Görev Ekle</h5>
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="addUsersOperationClaimForm" >
+                        <div class="form-group" style="margin: 1%;">
+                            <label for="userId">Kullanıcı Seçiniz</label>
+                            <select class="form-select w-100 form-select-lg" aria-label="userId" formControlName="userId" id="userId">
+                                <option selected value="">Kullanıcı Seçiniz</option>
+                                <option *ngFor="let user of users" [value]="user.id">
+                                {{user.email}}
+                                </option>
+                            </select>
+                            <div *ngIf="addUsersOperationClaimForm.controls['userId'].invalid && (addUsersOperationClaimForm.controls['userId'].dirty || addUsersOperationClaimForm.controls['userId'].touched)">
+                                <span class="text-danger" *ngIf="addUsersOperationClaimForm.get('userId').errors && addUsersOperationClaimForm.get('userId').hasError('required')">*Kullanıcı Seçmeniz Gerekiyor</span>
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin: 1%;">
+                            <label for="operationClaimId">Yetki Seçiniz</label>
+                            <select class="form-select w-100 form-select-lg" aria-label="operationClaimId" formControlName="operationClaimId" id="operationClaimId">
+                                <option selected value="">Yetki Seçiniz</option>
+                                <option *ngFor="let claim of claims" [value]="claim.id">
+                                {{claim.name}}
+                                </option>
+                            </select>
+                            <div *ngIf="addUsersOperationClaimForm.controls['operationClaimId'].invalid && (addUsersOperationClaimForm.controls['operationClaimId'].dirty || addUsersOperationClaimForm.controls['operationClaimId'].touched)">
+                                <span class="text-danger" *ngIf="addUsersOperationClaimForm.get('operationClaimId').errors && addUsersOperationClaimForm.get('operationClaimId').hasError('required')">*Yetki Seçmeniz Gerekiyor</span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-fiil btn-primary btn-block" (click)="addUsers()">Ekle</button>
                 </div>
             </div>
         </div>

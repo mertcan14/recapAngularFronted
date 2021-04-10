@@ -33,6 +33,9 @@ import { FilterUserPipe } from '../pipes/filter-user.pipe';
 import { AddUserClaimComponent } from './user-claim/add-user-claim/add-user-claim.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { AddHomepagecarComponent } from './add-homepagecar/add-homepagecar.component';
+import { UsersManagerComponent } from './users-manager/users-manager.component';
+import { UserFilterPipePipe } from 'app/pipes/user-filter-pipe.pipe';
+import { BlockedUserComponent } from './blocked-user/blocked-user.component';
 
 
 @NgModule({
@@ -52,6 +55,7 @@ import { AddHomepagecarComponent } from './add-homepagecar/add-homepagecar.compo
     FilterPipePipe,
     FilterBrandPipePipe,
     FilterColorPipePipe,
+    UserFilterPipePipe,
     FilterUserPipe,
     CarFilterComponent,
     PaymentComponent,
@@ -72,6 +76,8 @@ import { AddHomepagecarComponent } from './add-homepagecar/add-homepagecar.compo
     AddUserClaimComponent,
     HomepageComponent,
     AddHomepagecarComponent,
+    UsersManagerComponent,
+    BlockedUserComponent,
   ],
   exports: [
     FooterComponent,

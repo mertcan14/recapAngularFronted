@@ -6,6 +6,7 @@
     </div>
     <div *ngIf="dataLoaded == true">
         <div class="container">
+            
             <div class="card">
                 <div class="card-header card-header-danger d-flex justify-content-between">
                     <div >
@@ -52,6 +53,9 @@
     </div>
 
     <div *ngIf="datasLoaded == true" class="container-fluid">
+        <div>
+            <button class="btn btn-info btn-block btn-lg" routerLink="/users/claims/add">Yeni Kullanıcıya Yetki Ver</button>
+        </div>
         <div class="card">
             <div class="card-header card-header-danger row">
                 <div class="col-md-4">

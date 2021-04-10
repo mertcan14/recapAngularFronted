@@ -15,6 +15,9 @@
 
 
 ### Images
+  <img src="https://raw.githubusercontent.com/mertcan14/recapAngularFronted/master/rentcarimg/Ekran%20Al%C4%B1nt%C4%B1s%C4%B110.PNG" width="550" height="300">
+  <img src="https://raw.githubusercontent.com/mertcan14/recapAngularFronted/master/rentcarimg/Ekran%20Al%C4%B1nt%C4%B1s%C4%B111.PNG" width="550" height="300">
+  
   <img src="https://user-images.githubusercontent.com/61551987/112177915-652de400-8c0a-11eb-90a0-4c04b5885f6b.PNG" width="550" height="300">
   
   <img src="https://user-images.githubusercontent.com/61551987/112178028-8262b280-8c0a-11eb-82c0-9d95c79c3cc5.PNG" width="550" height="300">
@@ -27,7 +30,7 @@
   
   <img src="https://user-images.githubusercontent.com/61551987/112180494-aa531580-8c0c-11eb-90aa-a02f93a30e02.PNG" width="550" height="300">
  
-  <img src="https://user-images.githubusercontent.com/61551987/113480434-da1bdc00-949c-11eb-9382-e8174c079a15.PNG" width="550" height="300">
+  <img src="https://raw.githubusercontent.com/mertcan14/recapAngularFronted/master/rentcarimg/Ekran%20Al%C4%B1nt%C4%B1s%C4%B112.PNG" width="550" height="300">
   
   <img src="https://user-images.githubusercontent.com/61551987/113480543-60d0b900-949d-11eb-9410-91b556596e60.PNG" width="550" height="300">
   

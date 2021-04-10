@@ -34,4 +34,4 @@
   
   <img src="https://user-images.githubusercontent.com/61551987/113480543-60d0b900-949d-11eb-9410-91b556596e60.PNG" width="550" height="300">
   
-  <img src="https://user-images.githubusercontent.com/61551987/113480549-6e863e80-949d-11eb-85e2-68db49c466cb.PNG" width="550" height="300">
+  <img src="https://raw.githubusercontent.com/mertcan14/recapAngularFronted/master/rentcarimg/Ekran%20Al%C4%B1nt%C4%B1s%C4%B117.PNG" width="550" height="300">

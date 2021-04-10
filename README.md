@@ -15,25 +15,18 @@
 
 
 ### Images
-  ##### Cars
   <img src="https://user-images.githubusercontent.com/61551987/112177915-652de400-8c0a-11eb-90a0-4c04b5885f6b.PNG" width="550" height="300">
   
-  ##### Colors
   <img src="https://user-images.githubusercontent.com/61551987/112178028-8262b280-8c0a-11eb-82c0-9d95c79c3cc5.PNG" width="550" height="300">
   
-  ##### Rentals
   <img src="https://user-images.githubusercontent.com/61551987/112180233-6b24c480-8c0c-11eb-8704-367237c38443.PNG" width="550" height="300">
   
-  ##### Brands
   <img src="https://user-images.githubusercontent.com/61551987/112180273-7677f000-8c0c-11eb-9d7c-a28dc4931360.PNG" width="550" height="300">
   
-  ##### Car-Detail
   <img src="https://user-images.githubusercontent.com/61551987/112180324-8263b200-8c0c-11eb-9a58-2f10361d49ce.PNG" width="550" height="300">
   
-  ##### Pay
   <img src="https://user-images.githubusercontent.com/61551987/112180494-aa531580-8c0c-11eb-90aa-a02f93a30e02.PNG" width="550" height="300">
-  
-  ##### Add/Update
+ 
   <img src="https://user-images.githubusercontent.com/61551987/113480434-da1bdc00-949c-11eb-9382-e8174c079a15.PNG" width="550" height="300">
   
   <img src="https://user-images.githubusercontent.com/61551987/113480543-60d0b900-949d-11eb-9410-91b556596e60.PNG" width="550" height="300">
